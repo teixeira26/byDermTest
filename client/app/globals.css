@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .title-biggest {
+    font-size: 48px;
+  }
+  .subtitle-biggest {
+    font-size: 28px;
+  }
+  .title {
+    font-size: 32px;
+  }
+  .subtitle {
+    font-size: 24px;
+  }
+  .m-ext{
+    margin: 32px;
+  }
+  .m-int{
+    margin: 16px;
+  }
+
+}
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+main{
+  max-width: 1366px;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+.fadeoff {
+  animation: fadeOut .5s;
+}
+
+@keyframes fadeOut {
+  0% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
+
+.fadein {
+  animation: fadeIn .5s;
+}
+
+@keyframes fadeIn {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}

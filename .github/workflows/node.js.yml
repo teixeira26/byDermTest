@@ -27,7 +27,6 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'pnpm'
         cache-dependency-path: '**/pnpm-lock.yaml'
-    - run: pm2 stop byDerm_prod
     - run: pnpm install
     - run: pnpm run build
 

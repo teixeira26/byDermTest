@@ -28,6 +28,9 @@ jobs:
         cache: 'pnpm'
         cache-dependency-path: '**/pnpm-lock.yaml'
     - run: pnpm install
+    - run: cd ..
+    - run: cd client
+    - run: pnpm install
     - run: pnpm run build
 
   

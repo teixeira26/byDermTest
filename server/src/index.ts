@@ -4,6 +4,9 @@ import recipeRoutes from './recipe/infractructure/route/recipeRoutes';
 import productRoutes from './product/infractructure/route/productRoutes';
 import { Request, Response } from "express";
 const cors = require('cors')
+const path = require('path')
+
+app.use(express.static(path.join(_dirname, 'client/build')))
 
 
 const app = express();

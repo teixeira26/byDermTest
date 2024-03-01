@@ -32,7 +32,7 @@ jobs:
     - run: pnpm build
     - run: pnpm start & npx wait-on http://localhost:3000
     - run: cd .. 
-    - run: pm2 start prod
+    - run: pm2 start pnpm --name "byderm-cupones" --start
     - run: pm2 save
     - run: sudo service nginx restart
 

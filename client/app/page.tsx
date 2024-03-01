@@ -8,33 +8,35 @@ import { square } from "ldrs";
 
 
 export default function Home() {
-  square.register()
   const router = useRouter();
-  const [isUnmounting, setIsUnmounting] = useState(false);
-  const [hydrated, setHydrated] = useState(false);
-  const [tuitionNumber, setTuitionNumber] = useState(0);
-  const [error, setError] = useState(false);
+ const [isUnmounting, setIsUnmounting] = useState(false);
+const [hydrated, setHydrated] = useState(false);
+const [tuitionNumber, setTuitionNumber] = useState(0);
+const [error, setError] = useState(false);
+
+useEffect(() => {
 
 
-  useEffect(() => {
+  if(typeof window !== "undefined"){
+    square.register()
     const changed = JSON.parse(localStorage.getItem("changed") || "false");
     if (changed) {
       router.push("/welcome");
-    } else if (changed) {
-      localStorage.setItem("changed", "false");
     } else {
       setHydrated(true);
     }
-  }, []);
+  }
+}, []);
 
-  const handleFormSubmit = async(e:any) => {
-    e.preventDefault();
-    if (tuitionNumber === 0) {
-      setError(true);
-      return;
-    }
-    const doctor = await getDoctorByLicense(tuitionNumber as unknown as string);
-    if(!doctor){
+const handleFormSubmit = async (e: any) => {
+  e.preventDefault();
+  if (!tuitionNumber) {
+    setError(true);
+    return;
+  }
+  try {
+    const doctor = await getDoctorByLicense(tuitionNumber.toString());
+    if (!doctor) {
       Swal.fire({
         position: "bottom-start",
         icon: "error",
@@ -42,12 +44,15 @@ export default function Home() {
         showConfirmButton: false,
         timer: 1500,
       });
-      return
+      return;
     }
     setIsUnmounting(true);
     localStorage.setItem("changed", JSON.stringify(doctor));
     router.push("/products");
-  };
+  } catch (error) {
+    console.error("Error al obtener el doctor:", error);
+  }
+};
   return (
     <>
       {hydrated ? (

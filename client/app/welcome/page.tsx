@@ -6,7 +6,6 @@ import { square } from "ldrs";
 
 
 export default function Home() {
-  square.register();
   const router = useRouter();
   const [isUnmounting, setIsUnmounting] = useState(false);
 
@@ -20,26 +19,30 @@ export default function Home() {
 
 
   useEffect(() => {
-    const doctor = JSON.parse(localStorage.getItem("changed") || "false");
-    const previousDate = localStorage.getItem("previousDate");
-    const actualDate = new Date().toISOString().split("T")[0];
-    const changed = JSON.parse(localStorage.getItem("dateChanged") || "false");
+    if(typeof window !== "undefined"){
+      square.register();
 
-    console.log(previousDate, actualDate)
-
-    setDoctorData(doctor);
-
-    if (previousDate === actualDate && !changed) {
-      router.push('/products')
+      const doctor = JSON.parse(localStorage.getItem("changed") || "false");
+      const previousDate = localStorage.getItem("previousDate");
+      const actualDate = new Date().toISOString().split("T")[0];
+      const changed = JSON.parse(localStorage.getItem("dateChanged") || "false");
+  
+      console.log(previousDate, actualDate)
+  
+      setDoctorData(doctor);
+  
+      if (previousDate === actualDate && !changed) {
+        router.push('/products')
+      }
+      else if (changed) {
+        localStorage.setItem("dateChanged", "false");
+      } 
+      else{
+      localStorage.setItem("previousDate", new Date().toISOString().split("T")[0]);
+      localStorage.setItem("date", new Date().toISOString().split("T")[0]);
+      localStorage.setItem("dateChanged", "true");
+      setHydrated(true);
     }
-    else if (changed) {
-      localStorage.setItem("dateChanged", "false");
-    } 
-    else{
-    localStorage.setItem("previousDate", new Date().toISOString().split("T")[0]);
-    localStorage.setItem("date", new Date().toISOString().split("T")[0]);
-    localStorage.setItem("dateChanged", "true");
-    setHydrated(true);
   }
 
   }, []);

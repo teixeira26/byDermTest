@@ -27,7 +27,13 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'pnpm'
         cache-dependency-path: '**/pnpm-lock.yaml'
+    - run: pm2 stop prod
     - run: pnpm install
     - run: pnpm build
+    - run: pnpm start
+    - run: cd .. 
+    - run: pm2 start prod
+    - run: pm2 save
+    - run: sudo service nginx restart
 
   

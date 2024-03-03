@@ -27,8 +27,13 @@ export default function Page() {
   }, []);
 
   const addProductToCart = (item: Product) => {
-    const previousLocalStorageContent = JSON.parse(localStorage.getItem("cart") || "[]");
-    localStorage.setItem("cart", JSON.stringify([...previousLocalStorageContent, item]));
+    const previousLocalStorageContent = JSON.parse(
+      localStorage.getItem("cart") || "[]"
+    );
+    localStorage.setItem(
+      "cart",
+      JSON.stringify([...previousLocalStorageContent, item])
+    );
     setProductsOnCart(productsOnCart + 1);
     Swal.fire({
       position: "bottom-start",
@@ -40,7 +45,9 @@ export default function Page() {
   };
 
   const filterCards = (value: string): Product[] => {
-    return products.filter((product) => product.name.toLowerCase().includes(value.toLowerCase()));
+    return products.filter((product) =>
+      product.name.toLowerCase().includes(value.toLowerCase())
+    );
   };
 
   return (
@@ -53,7 +60,7 @@ export default function Page() {
           height={52}
           src={"/logo.png"}
         />
-       
+
         <div>
           <Link href="/coupon">
             <FaCartShopping
@@ -63,59 +70,64 @@ export default function Page() {
           </Link>
           {productsOnCart > 0 && (
             <div className="absolute bg-white right-[26px] z-50 top-[38px] w-4 h-4 border-2 border-tango-500 rounded-[50%] flex justify-center items-center">
-              <p className="text-tango-500 text-[12px] font-bold ">{productsOnCart}</p>
+              <p className="text-tango-500 text-[12px] font-bold ">
+                {productsOnCart}
+              </p>
             </div>
           )}
         </div>
       </nav>
-<div className="md:grid grid-cols-2 gap-x-8 min-w-[calc(100vw-64px)] w-full">
-      <section className="mt-[116px] text-black title-biggest bg-tango-500">
-        <p>Serums</p>
-      </section>
-      {hydrated ? (
-        productsFiltered.map((product) => (
-          // <article key={product.imagePath} className="mt-[94px] w-full">
-          //   <div className="w-full mt-8 h-[40vh] md:h-[60vh] relative">
-          //     <img
-          //       className="rounded-[16px] object-cover w-full h-[40vh] md:h-[60vh] cursor-pointer"
-          //       alt={product.name}
-          //       src={`/${product.imagePath}`}
-          //       onClick={() => addProductToCart(product)}
-          //     />
-          //   </div>
-          //   <p className="title font-bold mt-4">{product.name}</p>
-          //   <div className="flex items-end">
-          //     <p title={product.description} className="subtitle mt-4 w-[calc(100%-32px)]">
-          //       {product.description}
-          //     </p>
-          //     <FaPlus
-          //       size={32}
-          //       className="text-tango-500 hover:text-tango-600 active:text-tango-700 cursor-pointer"
-          //       onClick={() => addProductToCart(product)}
-          //     />
-          //   </div>
-          // </article>
-          <article>
-          </article>
-        ))
-      ) : (
-        <div className="z-50 flex justify-center">
-          <div>
-            <ContentLoader
-              speed={2}
-              width={400}
-              height={1060}
-              viewBox="0 400 400 1060"
-              backgroundColor="#f3f3f3"
-              foregroundColor="#ecebeb"
-            >
-              <rect x="8" y="500" rx="16" ry="16" width="380" height="400" />
-              <rect x="8" y="928" rx="2" ry="2" width="300" height="40" />
-              <rect x="8" y="988" rx="2" ry="2" width="250" height="18" />
-            </ContentLoader>
+      <div className="md:grid grid-cols-2 gap-x-8 min-w-[calc(100vw-64px)] w-full">
+        {hydrated ? (
+          productsFiltered.map((product) => (
+            // <article key={product.imagePath} className="mt-[94px] w-full">
+            //   <div className="w-full mt-8 h-[40vh] md:h-[60vh] relative">
+            //     <img
+            //       className="rounded-[16px] object-cover w-full h-[40vh] md:h-[60vh] cursor-pointer"
+            //       alt={product.name}
+            //       src={`/${product.imagePath}`}
+            //       onClick={() => addProductToCart(product)}
+            //     />
+            //   </div>
+            //   <p className="title font-bold mt-4">{product.name}</p>
+            //   <div className="flex items-end">
+            //     <p title={product.description} className="subtitle mt-4 w-[calc(100%-32px)]">
+            //       {product.description}
+            //     </p>
+            //     <FaPlus
+            //       size={32}
+            //       className="text-tango-500 hover:text-tango-600 active:text-tango-700 cursor-pointer"
+            //       onClick={() => addProductToCart(product)}
+            //     />
+            //   </div>
+            // </article>
+            <article key={product.imagePath} className="mt-[94px] w-full">
+              <div>
+                <p className="title font-bold mt-4">{product.name}</p>
+                <p className="subtitle mt-4">{product.name}</p>
+                <p className="text-small mt-4">{product.name}</p>
+                <p className="text-small mt-4"><span className="font-bold mr-2">9.900,00</span><span className="line-through">9.900,00</span></p>
+              </div>
+            </article>
+          ))
+        ) : (
+          <div className="z-50 flex justify-center">
+            <div>
+              <ContentLoader
+                speed={2}
+                width={400}
+                height={1060}
+                viewBox="0 400 400 1060"
+                backgroundColor="#f3f3f3"
+                foregroundColor="#ecebeb"
+              >
+                <rect x="8" y="500" rx="16" ry="16" width="380" height="400" />
+                <rect x="8" y="928" rx="2" ry="2" width="300" height="40" />
+                <rect x="8" y="988" rx="2" ry="2" width="250" height="18" />
+              </ContentLoader>
+            </div>
           </div>
-        </div>
-      )}
+        )}
       </div>
     </div>
   );

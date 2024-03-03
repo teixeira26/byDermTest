@@ -15,6 +15,9 @@
   .subtitle {
     font-size: 24px;
   }
+  .text-small {
+    font-size: 16px;
+  }
   .m-ext{
     margin: 32px;
   }

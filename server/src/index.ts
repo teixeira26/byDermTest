@@ -10,7 +10,7 @@ const app = express();
 
 const PORT = process.env.PORT || 3001;
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://example2.com']
+  origin: ['http://localhost:3000', 'https://example2.com', 'http://104.131.67.42:3000', 'http://104.131.67.42']
 }));
 
 // Middleware para parsear el cuerpo de las solicitudes como JSON

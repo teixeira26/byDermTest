@@ -43,13 +43,6 @@ export default function Page() {
     return products.filter((product) => product.name.toLowerCase().includes(value.toLowerCase()));
   };
 
-  const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setSearchValue(value);
-    const filteredProducts = filterCards(value);
-    setProductsFiltered(filteredProducts);
-  };
-
   return (
     <div className="fadein">
       <nav className="flex items-center justify-between fixed z-40 w-[100vw] bg-white top-0 left-0 pt-8 pb-8">
@@ -60,19 +53,7 @@ export default function Page() {
           height={52}
           src={"/logo.png"}
         />
-        <div className="flex flex-col justify-center items-end mr-4 w-full relative">
-          <input
-            type="text"
-            id="tuitionNumber"
-            placeholder="Cleanser..."
-            className="border-2 p-4 rounded-full border-black block w-full"
-            value={searchValue}
-            onChange={handleSearchInputChange}
-          />
-          <button className="absolute p-[14px] bg-nevada-500 hover:bg-nevada-600 active:bg-nevada-700 rounded-full right-1">
-            <FaMagnifyingGlass color="white" size={"24px"} />
-          </button>
-        </div>
+       
         <div>
           <Link href="/coupon">
             <FaCartShopping
@@ -88,28 +69,33 @@ export default function Page() {
         </div>
       </nav>
 <div className="md:grid grid-cols-2 gap-x-8 min-w-[calc(100vw-64px)] w-full">
+      <section className="mt-[116px] text-black title-biggest bg-tango-500">
+        <p>Serums</p>
+      </section>
       {hydrated ? (
         productsFiltered.map((product) => (
-          <article key={product.imagePath} className="mt-[94px] w-full">
-            <div className="w-full mt-8 h-[40vh] md:h-[60vh] relative">
-              <img
-                className="rounded-[16px] object-cover w-full h-[40vh] md:h-[60vh] cursor-pointer"
-                alt={product.name}
-                src={`/${product.imagePath}`}
-                onClick={() => addProductToCart(product)}
-              />
-            </div>
-            <p className="title font-bold mt-4">{product.name}</p>
-            <div className="flex items-end">
-              <p title={product.description} className="subtitle mt-4 w-[calc(100%-32px)]">
-                {product.description}
-              </p>
-              <FaPlus
-                size={32}
-                className="text-tango-500 hover:text-tango-600 active:text-tango-700 cursor-pointer"
-                onClick={() => addProductToCart(product)}
-              />
-            </div>
+          // <article key={product.imagePath} className="mt-[94px] w-full">
+          //   <div className="w-full mt-8 h-[40vh] md:h-[60vh] relative">
+          //     <img
+          //       className="rounded-[16px] object-cover w-full h-[40vh] md:h-[60vh] cursor-pointer"
+          //       alt={product.name}
+          //       src={`/${product.imagePath}`}
+          //       onClick={() => addProductToCart(product)}
+          //     />
+          //   </div>
+          //   <p className="title font-bold mt-4">{product.name}</p>
+          //   <div className="flex items-end">
+          //     <p title={product.description} className="subtitle mt-4 w-[calc(100%-32px)]">
+          //       {product.description}
+          //     </p>
+          //     <FaPlus
+          //       size={32}
+          //       className="text-tango-500 hover:text-tango-600 active:text-tango-700 cursor-pointer"
+          //       onClick={() => addProductToCart(product)}
+          //     />
+          //   </div>
+          // </article>
+          <article>
           </article>
         ))
       ) : (

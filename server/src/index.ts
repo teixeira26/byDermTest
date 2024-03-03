@@ -1,10 +1,10 @@
-const express = require('express')
+import express from 'express'
 import doctorRoutes from './doctor/infractructure/route/doctorRoutes';
 import recipeRoutes from './recipe/infractructure/route/recipeRoutes';
 import productRoutes from './product/infractructure/route/productRoutes';
 import { Request, Response } from "express";
-const cors = require('cors')
-const path = require('path')
+import cors from 'cors'
+import path from 'path'
 const app = express();
 
 

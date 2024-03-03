@@ -1,4 +1,4 @@
-import express from 'express';
+const express = require('express')
 import doctorRoutes from './doctor/infractructure/route/doctorRoutes';
 import recipeRoutes from './recipe/infractructure/route/recipeRoutes';
 import productRoutes from './product/infractructure/route/productRoutes';

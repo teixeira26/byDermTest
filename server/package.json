@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/index.ts",
-    "build": "cd .. && cd client && pnpm install --force && pnpm build"
+    "build": "pnpm install --force && cd .. && cd client && pnpm install --force && pnpm build"
   },
   "keywords": [],
   "author": "",

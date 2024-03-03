@@ -27,10 +27,6 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'pnpm'
         cache-dependency-path: '**/pnpm-lock.yaml'
-    - run: cd server
-    - run: pnpm install
-    - run: cd ..
-    - run: cd client
     - run: pnpm build
     - run: pm2 reload 0
     - run: pm2 reload 1

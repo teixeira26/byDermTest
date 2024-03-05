@@ -107,7 +107,7 @@ export default function Home() {
               src={"/logo.png"}
             />
             <p className="block text-black title-biggest text-center">
-              Hola Vale,
+              Hola {hydrated ? doctorData.name : ''},
               <span className="text-tango-500">&nbsp; gracias&nbsp;</span>
               por apoyarnos
             </p>

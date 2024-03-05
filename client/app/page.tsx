@@ -13,6 +13,7 @@ export default function Home() {
 const [hydrated, setHydrated] = useState(false);
 const [tuitionNumber, setTuitionNumber] = useState(0);
 const [error, setError] = useState(false);
+const [checkUser, setCheckUser] = useState(false);
 
 useEffect(() => {
 
@@ -28,30 +29,46 @@ useEffect(() => {
   }
 }, []);
 
+
+useEffect(() => {
+  const fetchData = async () => {
+    if (checkUser) {
+      if (!tuitionNumber) {
+        setError(true);
+        return;
+        setCheckUser(false);
+      }
+      try {
+        const doctor = await getDoctorByLicense(tuitionNumber.toString());
+        if (!doctor) {
+          Swal.fire({
+            position: "bottom-start",
+            icon: "error",
+            title: "Número de Matrícula no encontrado",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          setCheckUser(false);
+          return;
+        }
+        setIsUnmounting(true);
+        localStorage.setItem("changed", JSON.stringify(doctor));
+        router.push("/products");
+      } catch (error) {
+        console.error("Error al obtener el doctor:", error);
+        setCheckUser(false);
+      }
+      setCheckUser(false);
+    }
+  };
+
+  fetchData();
+}, [checkUser]); // Dependencia del useEffect
+
+
 const handleFormSubmit = async (e: any) => {
   e.preventDefault();
-  if (!tuitionNumber) {
-    setError(true);
-    return;
-  }
-  try {
-    const doctor = await getDoctorByLicense(tuitionNumber.toString());
-    if (!doctor) {
-      Swal.fire({
-        position: "bottom-start",
-        icon: "error",
-        title: "Número de Matrícula no encontrado",
-        showConfirmButton: false,
-        timer: 1500,
-      });
-      return;
-    }
-    setIsUnmounting(true);
-    localStorage.setItem("changed", JSON.stringify(doctor));
-    router.push("/products");
-  } catch (error) {
-    console.error("Error al obtener el doctor:", error);
-  }
+  setCheckUser(true);
 };
   return (
     <>

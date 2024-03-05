@@ -6,6 +6,9 @@ import { useEffect, useState } from "react";
 import { FaRegPaperPlane, FaArrowRight } from "react-icons/fa6";
 import Swal from "sweetalert2";
 import countUniqueOccurrences from "./services/countUniqueOcurrences";
+import sendEmail from "./services/sendEmail";
+import createRecipe from "./services/createRecipe";
+import { product } from "../products/models/products.json";
 
 function getCartItems() {
   return JSON.parse(localStorage.getItem("cart") || "[]") as never[];
@@ -19,11 +22,25 @@ export default function Home() {
   const [cartItems, setCartItems] = useState([]);
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, sendMessage] = useState(false);
+  const router = useRouter();
 
   // Cargar los elementos del carrito al montar el componente
   useEffect(() => {
     setCartItems(countUniqueOccurrences(getCartItems()) as any);
   }, []);
+
+  useEffect(()=>{
+    if(message){
+       sendEmail(email);
+       console.log(cartItems,  cartItems.map((x: any)=>x.id))
+       createRecipe(JSON.parse(localStorage.getItem('changed') as any).license, cartItems.map((x:any)=>{
+        return ({name: x.name, count: x.count as any, price: x.price, id: x.id})
+      }) as any )
+      sendMessage(false)       
+    }
+  },[message])
 
   return (
     <>
@@ -52,9 +69,9 @@ export default function Home() {
       </div>
       <div className="w-full flex flex-col items-left mt-8">
         {cartItems.length ? (
-          cartItems.map(({ count, name }) => (
+          cartItems.map(({ count, name, quantity }) => (
             <p key={name} className="subtitle mt-4">
-              <span className="font-bold">{count}un. &nbsp;</span> {name}
+              <span className="font-bold">{count}un. &nbsp;</span> {name}&nbsp; <span className="text-small">{quantity}ml</span>
             </p>
           ))
         ) : (
@@ -76,7 +93,7 @@ export default function Home() {
           />
         </div>
       </div>
-      <div className="flex flex-col gap-4 w-full">
+      {/* <div className="flex flex-col gap-4 w-full">
         <label className="text-[24px] mt-8 font-medium w-full" htmlFor="name">
           WhatsApp
         </label>
@@ -97,7 +114,7 @@ export default function Home() {
             <FaRegPaperPlane color="white" size={"24px"} />
           </a>
         </div>
-      </div>
+      </div> */}
       <div className="flex flex-col gap-4 w-full">
         <label className="text-[24px] mt-8 font-medium w-full" htmlFor="name">
           Email
@@ -108,16 +125,13 @@ export default function Home() {
             id="name"
             placeholder="exemplo@gmail.com"
             className="border-2 p-4 rounded-full border-black block w-full"
+            onChange={(e)=>setEmail(e.target.value)}
           />
           <button
-            onClick={() => {
-              Swal.fire({
-                position: "bottom-start",
-                icon: "success",
-                title: "Mensaje enviado",
-                showConfirmButton: false,
-                timer: 1500,
-              });
+            onClick={async() => {
+              sendMessage(true);
+              clearCart();
+              router.push("/thanks")
             }}
             className="absolute p-[14px] bg-tango-500 hover:bg-tango-600 active:bg-tango-700 rounded-full mr-1"
           >
@@ -180,7 +194,7 @@ export default function Home() {
           />
         </div>
       </div>
-      <div className="flex flex-col gap-4 w-full">
+      {/* <div className="flex flex-col gap-4 w-full">
         <label className="text-[24px] mt-8 font-medium w-full" htmlFor="name">
           WhatsApp
         </label>
@@ -201,27 +215,23 @@ export default function Home() {
             <FaRegPaperPlane color="white" size={"24px"} />
           </a>
         </div>
-      </div>
+      </div> */}
       <div className="flex flex-col gap-4 w-full">
         <label className="text-[24px] mt-8 font-medium w-full" htmlFor="name">
           Email
         </label>
         <div className="flex flex-col justify-center items-end">
           <input
-            type="text"
+            type="email"
             id="name"
             placeholder="exemplo@gmail.com"
             className="border-2 p-4 rounded-full border-black block w-full"
           />
           <button
-            onClick={() => {
-              Swal.fire({
-                position: "bottom-start",
-                icon: "success",
-                title: "Mensaje enviado",
-                showConfirmButton: false,
-                timer: 1500,
-              });
+            onClick={async() => {
+              sendMessage(true)
+              clearCart();
+              router.push("/thanks")
             }}
             className="absolute p-[14px] bg-tango-500 hover:bg-tango-600 active:bg-tango-700 rounded-full mr-1"
           >

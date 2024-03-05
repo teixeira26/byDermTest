@@ -14,9 +14,10 @@ export class FirebaseRecipeRepository {
           const recipeData = {
             date:RecipeValue.date,
             doctorLicense:RecipeValue.doctorLicense,
-            products: RecipeValue.products
+            products: RecipeValue.products,
+            hour: RecipeValue.hour,
           };
-    
+          console.log(recipeData, RecipeValue)
           const recipesCollection = collection(db, 'recipes');
           const docRef = await addDoc(recipesCollection, recipeData);
           return docRef.id;
@@ -33,7 +34,7 @@ export class FirebaseRecipeRepository {
       const querySnapshot = await getDocs(recipesCollection);
       const recipes: RecipeEntity[] = [];
 
-      querySnapshot.forEach((doc) => {
+      querySnapshot.forEach((doc:any) => {
         const recipeData = doc.data() as RecipeEntity;
         const recipe: RecipeEntity = { ...recipeData, id: doc.id };
         recipes.push(recipe);
@@ -64,6 +65,7 @@ async updateRecipe(recipeId: string,RecipeValue:RecipeValue): Promise<boolean | 
     const recipeDocRef = doc(db, 'recipes', recipeId);
     const recipeData = {
       date:RecipeValue.date,
+      hour: RecipeValue.hour,
       doctorLicense:RecipeValue.doctorLicense,
       products: RecipeValue.products
     };

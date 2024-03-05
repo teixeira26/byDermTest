@@ -7,8 +7,8 @@ export class RecipeUseCase {
     constructor(private readonly recipeRepository: RecipeRepository) {}
 
     //Register
-    public async addRecipe({ date, products, doctorLicense }: { doctorLicense: number; date: string; products: number[] }) {
-        const useValue = new RecipeValue({ date, products, doctorLicense });
+    public async addRecipe({ date, products, doctorLicense, hour }: { hour: string; doctorLicense: number; date: string; products: number[] }) {
+        const useValue = new RecipeValue({ date, products, doctorLicense, hour });
         
         const recipeCreated = await this.recipeRepository.addRecipe(useValue)
         return recipeCreated
@@ -34,11 +34,11 @@ export class RecipeUseCase {
     //UPDATE
     public async updateRecipe(
         recipeId: string,
-        { date, products, doctorLicense }: { doctorLicense: number; date: string; products: number[] }
+        { date, products, doctorLicense, hour }: { doctorLicense: number; date: string; hour:string; products: number[] }
       ): Promise<boolean | null> {
         try {
           const updated = await this.recipeRepository.updateRecipe(recipeId, {
-             date, products, doctorLicense 
+             date, products, doctorLicense, hour
           });
           return updated !== null ? true : false;
         } catch (error) {

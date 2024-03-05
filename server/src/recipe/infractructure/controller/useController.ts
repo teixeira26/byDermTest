@@ -10,10 +10,10 @@ export class recipeController {
     }
 
     async addRecipe(req: Request, res: Response){
-        const {doctorLicense, products, date} = req.body;
+        const {doctorLicense, products, date, hour} = req.body;
 
         try {
-            const recipeCreated = await this.recipeUseCase.addRecipe({ doctorLicense, products, date})
+            const recipeCreated = await this.recipeUseCase.addRecipe({ doctorLicense, products, date, hour})
             res.status(201).json(recipeCreated);
         } catch (error) {
             console.log(error);
@@ -52,11 +52,11 @@ export class recipeController {
     //Update
     async updateRecipe(req: Request, res: Response) {
         const recipeId = req.params.id;
-        const { doctorLicense, products, date } = req.body;
+        const { doctorLicense, products, date, hour} = req.body;
     
         try {
           const updated = await this.recipeUseCase.updateRecipe(recipeId, {
-            doctorLicense, products, date,
+            doctorLicense, products, date, hour
           });
     
           if (updated) {

@@ -4,4 +4,5 @@ export interface RecipeEntity{
     doctorLicense: number,
     products: number[],
     date: string,
+    hour: string,
 }

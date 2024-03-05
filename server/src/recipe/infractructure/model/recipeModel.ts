@@ -3,4 +3,5 @@ export interface RecipeModel {
   doctorLicense: number,
   products: number[],
   date: string,
+  hour: string,
   }

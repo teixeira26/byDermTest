@@ -26,6 +26,13 @@
   }
 
 }
+.hidden{
+  overflow: hidden
+}
+
+.visible{
+  overflow: visible;
+}
 
 :root {
   --foreground-rgb: 0, 0, 0;

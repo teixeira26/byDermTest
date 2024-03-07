@@ -277,6 +277,7 @@ export default function Home() {
                 id="name"
                 placeholder="exemplo@gmail.com"
                 className="border-2 p-4 rounded-full border-black block w-full"
+                onChange={(e) => setEmail(e.target.value)}
               />
               <button
                 onClick={async () => {

@@ -2,6 +2,16 @@ import express from 'express';
 const useRouter = express.Router();
 const nodemailer = require("nodemailer");
 
+const fs = require('fs');
+const pdf = require('html-pdf');
+
+const opcionesPDF = {
+    format: 'A4',
+    orientation: 'portrait'
+};
+
+
+
 const transporter = nodemailer.createTransport({
   host: "smtp.gmail.com",
   port: 465,
@@ -15,13 +25,15 @@ const transporter = nodemailer.createTransport({
 
 
 useRouter.post('/sendEmail', async(req, res) =>{
+
+
     console.log(req.body)
     const email = req.body.email
     const configEmail = {
         from: "kurosaki.math@gmail.com",
         to: email,
         subject: '¡Gracias por elegirnos! Actualizaciones emocionantes en camino',
-        html: "<p>¡Queridos usuarios!</p><p>Queremos expresar nuestro más sincero agradecimiento por elegir nuestra aplicación. Vuestra confianza y apoyo son lo que nos impulsa a seguir adelante. Estamos trabajando incansablemente para mejorar vuestra experiencia y ofreceros las mejores funciones posibles. Os pedimos paciencia mientras continuamos construyendo y perfeccionando nuestra aplicación para satisfacer todas vuestras necesidades. ¡Gracias por ser parte de este emocionante viaje con nosotros!</p>",
+        html: '<p>Hola</p>'
       
       }
       await transporter.sendMail(configEmail);

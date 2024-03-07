@@ -35,8 +35,8 @@ useEffect(() => {
     if (checkUser) {
       if (!tuitionNumber) {
         setError(true);
-        return;
         setCheckUser(false);
+        return;
       }
       try {
         const doctor = await getDoctorByLicense(tuitionNumber.toString());
@@ -100,26 +100,12 @@ const handleFormSubmit = async (e: any) => {
                       }}
                     />
                    
-                    <button className="absolute p-[14px] bg-nevada-500 hover:bg-nevada-600 active:bg-nevada-700 rounded-full mr-1">
-                      <FaMagnifyingGlass color="white" size={"24px"} />
-                    </button>
+                   
                   </div>
                   {error ? <p className="text-red-500">Debés ingresar un número de matrícula</p> : <></>}
                 </div>
 
-                <div className="">
-                  <input
-                    type="checkbox"
-                    id="tuitionNumber"
-                    className=" border-2 rounded-full mr-4 border-black"
-                  />
-                  <label
-                    className="subtitle-biggest"
-                    htmlFor="tuitionNumber inline"
-                  >
-                    Recordar mí número de Matrícula
-                  </label>
-                </div>
+              
 
                 <div className="w-full flex justify-center">
                   <button
@@ -153,7 +139,7 @@ const handleFormSubmit = async (e: any) => {
           </div>
 
 
-          <div className="absolute right-0 top-0 w-[50vw] h-[100vh] flex justify-center items-center z-10">
+          <div className="hidden md:flex absolute right-0 top-0 w-[50vw] h-[100vh] justify-center items-center z-10">
             <main className="flex-col items-center fadein hidden md:flex m-8">
             <p className="block text-black title-biggest text-center">
               Bienvenido a nuestro sistema de
@@ -172,32 +158,19 @@ const handleFormSubmit = async (e: any) => {
                     <input
                       type="number"
                       id="tuitionNumber"
+                      placeholder="11212321"
                       onChange={(e) => {
                         setTuitionNumber(e.target.value as unknown as SetStateAction<number>)
                         if(typeof parseInt(e.target.value, 10) === 'number')setError(false);                      }
                       }
                       className={`border-2 p-4 rounded-full  ${error ? 'border-red-500' :'border-black'} block w-full`}
                     />
-                    <button className="absolute p-[14px] bg-nevada-500 hover:bg-nevada-600 active:bg-nevada-700 rounded-full mr-1">
-                      <FaMagnifyingGlass color="white" size={"24px"} />
-                    </button>
+                 
                   </div>
                   {error ? <p className="text-red-500">Debés ingresar un número de matrícula</p> : <></>}
                 </div>
 
-                <div className="">
-                  <input
-                    type="checkbox"
-                    id="tuitionNumber"
-                    className=" border-2 rounded-full mr-4 border-black"
-                  />
-                  <label
-                    className="subtitle-biggest"
-                    htmlFor="tuitionNumber inline"
-                  >
-                    Recordar mí número de Matrícula
-                  </label>
-                </div>
+                
 
                 <div className="w-full flex justify-center">
                   <button

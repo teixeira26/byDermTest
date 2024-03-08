@@ -33,7 +33,7 @@ export default function page({}: Props) {
                     </span>&nbsp; 
  Has enviado la receta con éxito. ¿Tienes alguna pregunta o consulta técnica? No dudes en enviarnos un mensaje a nuestro
             </p>
-            <a href={`https://wa.me/+5411965693049/?text=Hola`} className="px-2 mt-2 rounded-[16px] py-[12px] bg-green-500 text-white">
+            <a href={`https://wa.me/+5491126311142/?text=Hola`} className="px-2 mt-2 rounded-[16px] py-[12px] bg-green-500 text-white">
             WhatsApp
             </a >
         </div>

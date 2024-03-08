@@ -1,6 +1,8 @@
 import express from 'express';
 const useRouter = express.Router();
 const nodemailer = require("nodemailer");
+const smtpTransport = require('nodemailer-smtp-transport');
+
 
 const fs = require('fs');
 const pdf = require('html-pdf');
@@ -12,15 +14,18 @@ const opcionesPDF = {
 
 
 
-const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 465,
-  secure: true, // Use `true` for port 465, `false` for all other ports
-  auth: {
-    user: "kurosaki.math@gmail.com",
-    pass: "fsoouvhiytqccuxk",
+const transporter = nodemailer.createTransport(smtpTransport({
+  host: 'mail.byderm.com.ar',
+  secureConnection: false,
+  tls: {
+    rejectUnauthorized: false
   },
-});
+  port: 587,
+  auth: {
+      user: 'bonodigital@byderm.com.ar',
+      pass: '3AM*Hc72yL'
+  }
+}));
 
 
 
@@ -30,7 +35,7 @@ useRouter.post('/sendEmail', async(req, res) =>{
     console.log(req.body)
     const email = req.body.email
     const configEmail = {
-        from: "kurosaki.math@gmail.com",
+        from: "bonodigital@byderm.com.ar",
         to: email,
         subject: '¡Gracias por elegirnos! Actualizaciones emocionantes en camino',
         html: '<p>Hola</p>'

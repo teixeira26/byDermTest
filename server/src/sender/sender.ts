@@ -12,7 +12,9 @@ const fs = require('fs');
 
 
 async function convertirHTMLaImagen(htmlString: any) {
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+        executablePath: '/usr/bin/chromium-browser'
+      });
     const page = await browser.newPage();
     await page.setViewport({ width:1200, height: 1803 });
     await page.setContent(htmlString);

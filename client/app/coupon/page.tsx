@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 import countUniqueOccurrences from "./services/countUniqueOcurrences";
 import sendEmail from "./services/sendEmail";
 import createRecipe from "./services/createRecipe";
-import { product } from "../products/models/products.json";
+import sendWhatsapp from "./services/sendWhats";
 
 function getCartItems() {
   return JSON.parse(localStorage.getItem("cart") || "[]") as never[];
@@ -24,12 +24,19 @@ function validarEmail(email: string) {
   return regex.test(email);
 }
 
+function validarWhats(number: string) {
+  // Expresión regular para validar direcciones de correo electrónico
+  const regex = /^\d{10}$/;
+  return regex.test(number);
+}
+
 export default function Home() {
   const [cartItems, setCartItems] = useState([]);
   const [name, setName] = useState("");
-  const [number, setNumber] = useState("");
+  const [whatsAppNumber, setWhatsAppNumber] = useState("");
   const [email, setEmail] = useState("");
   const [message, sendMessage] = useState(false);
+  const [whatsApp, sendWhatsApp] = useState(false);
   const router = useRouter();
 
   // Cargar los elementos del carrito al montar el componente
@@ -76,6 +83,46 @@ export default function Home() {
         sendMessage(false);
     }
   }, [message]);
+
+  useEffect(() => {
+    if (whatsApp) {
+      if (validarWhats(whatsAppNumber)) {
+        if(cartItems.length === 0){
+          Swal.fire({
+            icon: "info",
+            title: "Oops...",
+            text: "Debés ingresar productos a la receta antes de enviarla!",
+          });
+          sendWhatsApp(false);
+        }
+        else {sendWhatsapp(whatsAppNumber);
+        console.log(
+          cartItems,
+          cartItems.map((x: any) => x.id)
+        );
+        createRecipe(
+          JSON.parse(localStorage.getItem("changed") as any).license,
+          cartItems.map((x: any) => {
+            return {
+              name: x.name,
+              count: x.count as any,
+              price: x.price,
+              id: x.id,
+            };
+          }) as any
+        );
+        clearCart();
+        router.push("/thanks");
+        sendWhatsApp(false);}
+      } else
+        Swal.fire({
+          icon: "info",
+          title: "Oops...",
+          text: "El número de WhatsApp ingresado no es válido. Debes ingresar un número con el siguiente formato: 1122223333.",
+        });
+        sendWhatsApp(false);
+    }
+  }, [whatsApp]);
 
   return (
     <>
@@ -134,7 +181,7 @@ export default function Home() {
             />
           </div>
         </div>
-        {/* <div className="flex flex-col gap-4 w-full">
+         <div className="flex flex-col gap-4 w-full">
         <label className="text-[24px] mt-8 font-medium w-full" htmlFor="name">
           WhatsApp
         </label>
@@ -144,18 +191,20 @@ export default function Home() {
             id="name"
             placeholder="1165693056"
             className="border-2 p-4 rounded-full border-black block w-full"
-            onChange={(e) => setNumber(e.target.value)}
+            onChange={(e) => setWhatsAppNumber(e.target.value)}
 
           />
           <a
-            onClick={clearCart}
-            href={`https://wa.me/+549${number}/?text=Hola ${name},te comparto la receta con un descuento del 25%`}
+            onClick={async () => {
+              sendWhatsApp(true);
+              
+            }}
             className="absolute p-[14px] bg-tango-500 hover:bg-tango-600 active:bg-tango-700 rounded-full mr-1"
           >
             <FaRegPaperPlane color="white" size={"24px"} />
           </a>
         </div>
-      </div> */}
+      </div> 
         <div className="flex flex-col gap-4 w-full">
           <label className="text-[24px] mt-8 font-medium w-full" htmlFor="name">
             Email
@@ -242,7 +291,7 @@ export default function Home() {
               />
             </div>
           </div>
-          {/* <div className="flex flex-col gap-4 w-full">
+          <div className="flex flex-col gap-4 w-full">
         <label className="text-[24px] mt-8 font-medium w-full" htmlFor="name">
           WhatsApp
         </label>
@@ -252,18 +301,20 @@ export default function Home() {
             id="name"
             placeholder="1165693056"
             className="border-2 p-4 rounded-full border-black block w-full"
-            onChange={(e) => setNumber(e.target.value)}
+            onChange={(e) => setWhatsAppNumber(e.target.value)}
 
           />
           <a
-            onClick={clearCart}
-            href={`https://wa.me/+549${number}/?text=Hola ${name},te comparto la receta con un descuento del 25%`}
+             onClick={async () => {
+              sendWhatsApp(true);
+              
+            }}
             className="absolute p-[14px] bg-tango-500 hover:bg-tango-600 active:bg-tango-700 rounded-full mr-1"
           >
             <FaRegPaperPlane color="white" size={"24px"} />
           </a>
         </div>
-      </div> */}
+      </div> 
           <div className="flex flex-col gap-4 w-full">
             <label
               className="text-[24px] mt-8 font-medium w-full"

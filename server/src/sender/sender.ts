@@ -51,9 +51,7 @@ async function convertirHTMLaImagen(htmlString: any) {
     return pdfPath;
   }
   
-  
-  const imagePath = 'canvas.png';
-  const imageBuffer = fs.readFileSync(imagePath);
+
 
 const transporter = nodemailer.createTransport(smtpTransport({
   host: 'mail.byderm.com.ar',

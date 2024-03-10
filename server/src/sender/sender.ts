@@ -5,18 +5,25 @@ const nodemailer = require("nodemailer");
 const smtpTransport = require('nodemailer-smtp-transport');
 const puppeteer = require('puppeteer');
 const path = require('path');
-
-
-
 const fs = require('fs');
+// const venom = require('venom-bot');
 
+// let clientVenom:any;
+
+// venom
+//   .create({
+//     session: 'session-name' //name of session
+//   })
+//   .then((client:any) =>{
+//      clientVenom = client;
+//     })
+//   .catch((error:any) => {
+//     console.log(error);
+//   });
 
 
 async function convertirHTMLaImagen(htmlString: any) {
-    const browser = await puppeteer.launch({
-        executablePath: '/usr/bin/chromium-browser',
-        args: ['--no-sandbox', '--disable-setuid-sandbox'], 
-      });
+    const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setViewport({ width:1200, height: 1803 });
     await page.setContent(htmlString);
@@ -102,7 +109,10 @@ useRouter.post('/sendEmail', async(req, res) =>{
 
 
 useRouter.post("/sendWhatsapp", ()=>{
-
+    // clientVenom
+    //       .sendText(`549${"1165693049"}@c.us`, "Hola")
+          
+    
 })
 
 

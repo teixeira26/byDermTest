@@ -11,9 +11,10 @@ const path = require('path');
 const fs = require('fs');
 
 
+
 async function convertirHTMLaImagen(htmlString: any) {
     const browser = await puppeteer.launch({
-        executablePath: '/snap/bin/chromium',
+        executablePath: '/usr/bin/chromium-browser',
         args: ['--no-sandbox', '--disable-setuid-sandbox'], 
       });
     const page = await browser.newPage();
@@ -98,6 +99,11 @@ useRouter.post('/sendEmail', async(req, res) =>{
 
    
 }).catch((err)=>console.log(err))});
+
+
+useRouter.post("/sendWhatsapp", ()=>{
+
+})
 
 
 export default useRouter;

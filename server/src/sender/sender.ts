@@ -10,14 +10,11 @@ const fs = require('fs');
 const venom = require ('venom-bot')
 
 let clientVenom:any;
-fix()
 venom
   .create({
     session: 'session-name' //name of session
-  }, undefined,  {
+  },  {
     browserPathExecutable: '/usr/bin/google-chrome-stable', // browser executable path
-    folderNameToken: 'tokens', //folder name when saving tokens
-    // Resto de las opciones...
   })
   .then((client:any) =>{
      clientVenom = client;

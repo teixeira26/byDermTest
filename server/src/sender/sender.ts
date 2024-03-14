@@ -1,28 +1,37 @@
 import express from 'express';
 import htmlContent from './htmlContent';
+import fix from './fixVenom';
 const useRouter = express.Router();
 const nodemailer = require("nodemailer");
 const smtpTransport = require('nodemailer-smtp-transport');
 const puppeteer = require('puppeteer');
 const path = require('path');
 const fs = require('fs');
+const venom = require ('venom-bot')
 
-// let clientVenom:any;
-// fix()
-// venom
-//   .create({
-//     session: 'session-name' //name of session
-//   })
-//   .then((client:any) =>{
-//      clientVenom = client;
-//     })
-//   .catch((error:any) => {
-//     console.log(error);
-//   });
+let clientVenom:any;
+fix()
+venom
+  .create({
+    session: 'session-name' //name of session
+  }, undefined,  {
+    browserPathExecutable: '/usr/bin/google-chrome-stable', // browser executable path
+    folderNameToken: 'tokens', //folder name when saving tokens
+    // Resto de las opciones...
+  })
+  .then((client:any) =>{
+     clientVenom = client;
+    })
+  .catch((error:any) => {
+    console.log(error);
+  });
 
 
 async function convertirHTMLaImagen(htmlString: any) {
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+      executablePath: '/usr/bin/google-chrome-stable',
+      // Aquí puedes agregar otras opciones necesarias
+    });
     const page = await browser.newPage();
     await page.setViewport({ width:1200, height: 1803 });
     await page.setContent(htmlString);
@@ -33,7 +42,10 @@ async function convertirHTMLaImagen(htmlString: any) {
 
 
   async function convertirImagenAPDF(imagenPath: any, pdfPath: any) {
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+      executablePath: '/usr/bin/google-chrome-stable',
+      // Aquí puedes agregar otras opciones necesarias
+    });
     const page = await browser.newPage();
   
     await page.setViewport({ width: 1920, height: 1080 });
@@ -107,18 +119,18 @@ useRouter.post('/sendEmail', async(req, res) =>{
 }).catch((err)=>console.log(err))});
 
 
-// useRouter.post("/sendWhatsapp", async(req, res)=>{
-//     const {number} = req.body;
-//     await clientVenom
-//     .sendFile(
-//         `549${number}@c.us`,
-//         path.join(__dirname, '../../archive.pdf'),
-//         'archive.pdf',
-//         '¡Hola! Queremos agradecerte por confiar en nuestros médicos y productos. Como muestra de nuestro agradecimiento, queremos ofrecerte un cupón de descuento del 25%. ¡Esperamos que lo disfrutes!'
-//       )
-//     res.send("Whats enviado")
+useRouter.post("/sendWhatsapp", async(req, res)=>{
+    const {number} = req.body;
+    await clientVenom
+    .sendFile(
+        `549${number}@c.us`,
+        path.join(__dirname, '../../archive.pdf'),
+        'archive.pdf',
+        '¡Hola! Queremos agradecerte por confiar en nuestros médicos y productos. Como muestra de nuestro agradecimiento, queremos ofrecerte un cupón de descuento del 25%. ¡Esperamos que lo disfrutes!'
+      )
+    res.send("Whats enviado")
     
-// })
+})
 
 
 export default useRouter;

@@ -31,7 +31,7 @@ venom
 
 async function convertirHTMLaImagen(htmlString: any) {
     const browser = await puppeteer.launch({
-      executablePath: '/usr/bin/google-chrome-stable',
+      executablePath: '/usr/bin/chromium-browser',
       // Aquí puedes agregar otras opciones necesarias
     });
     const page = await browser.newPage();

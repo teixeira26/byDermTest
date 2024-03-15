@@ -21,10 +21,7 @@ const venom = require ('venom-bot')
 
 
 async function convertirHTMLaImagen(htmlString: any) {
-    const browser = await puppeteer.launch({
-      executablePath: '/usr/bin/chromium-browser',
-      // Aquí puedes agregar otras opciones necesarias
-    });
+    const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setViewport({ width:1200, height: 1803 });
     await page.setContent(htmlString);
@@ -35,10 +32,7 @@ async function convertirHTMLaImagen(htmlString: any) {
 
 
   async function convertirImagenAPDF(imagenPath: any, pdfPath: any) {
-    const browser = await puppeteer.launch({
-      executablePath: '/usr/bin/google-chrome-stable',
-      // Aquí puedes agregar otras opciones necesarias
-    });
+    const browser = await puppeteer.launch();
     const page = await browser.newPage();
   
     await page.setViewport({ width: 1920, height: 1080 });

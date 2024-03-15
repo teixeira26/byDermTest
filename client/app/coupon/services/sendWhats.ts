@@ -1,7 +1,7 @@
-import BACKEND_URL from "@/app/models/urls";
+import {BOT_URL} from "@/app/models/urls";
 
 const sendWhatsapp = async(number:string) => {
-    await fetch(`${BACKEND_URL}send/sendWhatsapp`, {
+    await fetch(`${BOT_URL}send/sendWhatsapp`, {
         method: "post",
         headers: {
           'Content-Type': 'application/json'

@@ -1,4 +1,4 @@
-import BACKEND_URL from "../models/urls";
+import {BACKEND_URL} from "../models/urls";
 
 const getDoctorByLicense = async(license:string) => {
     const doctors = await fetch(`${BACKEND_URL}doctors/list`).then((x)=>(x.json()));

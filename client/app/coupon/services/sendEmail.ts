@@ -1,4 +1,4 @@
-import BACKEND_URL from "@/app/models/urls";
+import {BACKEND_URL} from "@/app/models/urls";
 
 const sendEmail = async(email:string) => {
     await fetch(`${BACKEND_URL}send/sendEmail`, {

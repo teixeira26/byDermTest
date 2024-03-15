@@ -1,4 +1,4 @@
-import BACKEND_URL from "@/app/models/urls";
+import {BACKEND_URL} from "@/app/models/urls";
 import { product } from "@/app/products/models/products.json";
 
 function obtenerFechaArgentinaISO() {

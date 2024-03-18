@@ -12,10 +12,10 @@ export class doctorController {
 
     //Register
     async registerDoctor(req: Request, res: Response){
-        const {name, license} = req.body;
+        const {name, license, lastName} = req.body;
 
         try {
-            const doctorCreated = await this.doctorUseCase.registrarDoctor({name, license,})
+            const doctorCreated = await this.doctorUseCase.registrarDoctor({name, license, lastName})
             res.status(201).json(doctorCreated);
         } catch (error) {
             console.log(error);
@@ -54,12 +54,13 @@ export class doctorController {
     //Update
     async updateDoctor(req: Request, res: Response) {
         const doctorId = req.params.id;
-        const { name, license } = req.body;
+        const { name, license, lastName } = req.body;
     
         try {
           const updated = await this.doctorUseCase.actualizarDoctor(doctorId, {
             name,
-            license
+            license,
+            lastName
           });
     
           if (updated) {

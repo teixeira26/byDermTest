@@ -16,6 +16,12 @@ export class FirebaseRecipeRepository {
             doctorLicense:RecipeValue.doctorLicense,
             products: RecipeValue.products,
             hour: RecipeValue.hour,
+            doctorLastName: RecipeValue.doctorLastName,
+            doctorName: RecipeValue.doctorName,
+            placeOfPurchase: RecipeValue.placeOfPurchase,
+            purchaseLocality: RecipeValue.purchaseLocality,
+            purchaseProvince: RecipeValue.purchaseProvince,
+            dateOfPurchase: RecipeValue.dateOfPurchase
           };
           console.log(recipeData, RecipeValue)
           const recipesCollection = collection(db, 'recipes');
@@ -65,9 +71,15 @@ async updateRecipe(recipeId: string,RecipeValue:RecipeValue): Promise<boolean | 
     const recipeDocRef = doc(db, 'recipes', recipeId);
     const recipeData = {
       date:RecipeValue.date,
-      hour: RecipeValue.hour,
       doctorLicense:RecipeValue.doctorLicense,
-      products: RecipeValue.products
+      products: RecipeValue.products,
+      hour: RecipeValue.hour,
+      doctorLastName: RecipeValue.doctorLastName,
+      doctorName: RecipeValue.doctorName,
+      placeOfPurchase: RecipeValue.placeOfPurchase,
+      purchaseLocality: RecipeValue.purchaseLocality,
+      purchaseProvince: RecipeValue.purchaseProvince,
+      dateOfPurchase: RecipeValue.dateOfPurchase
     };
 
     await updateDoc(recipeDocRef, recipeData);

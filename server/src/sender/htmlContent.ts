@@ -115,6 +115,9 @@ const htmlContent = `
     .margin-t-4{
         margin-top: 16px;
     }
+    .checked{
+        background-color: black;
+    }
     </style>
 </head>
 <body>
@@ -137,15 +140,15 @@ const htmlContent = `
                     HIGIENE
                 </h2>
     
-                <section>
+                <section id='N2GcKGyBXscprcGlFB0q'>
                     <div class="circlesContainer">
                         <div class="quantityContainer">
-                            <div class="circle"></div>
+                            <div class="circle 100ml"></div>
                             <p>100ml</p>
     
                         </div>
                         <div class="quantityContainer">
-                            <div class="circle"></div>
+                            <div class="circle 250ml"></div>
     
                             <p>250ml</p>
     
@@ -163,15 +166,15 @@ const htmlContent = `
                 <div class="line"></div>
     
                 
-                <section class="margin-t-4">
+                <section class="margin-t-4" id="v3DIxakdRokAbQeFGQBv">
                     <div class="circlesContainer">
                         <div class="quantityContainer">
-                            <div class="circle"></div>
+                            <div class="circle 100gr"></div>
                             <p>100gr</p>
     
                         </div>
                         <div class="quantityContainer">
-                            <div class="circle"></div>
+                            <div class="circle 150gr"></div>
     
                             <p>150gr</p>
     
@@ -191,15 +194,15 @@ const htmlContent = `
                 </section>
                 <div class="line"></div>
     
-                <section class="margin-t-4">
+                <section class="margin-t-4" id='FaTc5ejj6HwfRf5vyaS9'>
                     <div class="circlesContainer">
                         <div class="quantityContainer">
-                            <div class="circle"></div>
+                            <div class="circle 100gr"></div>
                             <p>100gr</p>
     
                         </div>
                         <div class="quantityContainer">
-                            <div class="circle"></div>
+                            <div class="circle 150gr"></div>
     
                             <p>150gr</p>
     
@@ -217,10 +220,10 @@ const htmlContent = `
                 <div class="line"></div>
     
                 
-                <section class="margin-t-4">
+                <section class="margin-t-4" id='8cj1lZ2maRb9F5408k5k'>
                     <div class="circlesContainer">
                         <div class="quantityContainer">
-                            <div class="circle"></div>
+                            <div class="circle 60gr"></div>
                             <p>60gr</p>
     
                         </div>
@@ -240,10 +243,10 @@ const htmlContent = `
                 <h2 class="sectionTitle">
                     SERUMS
                 </h2>
-                <section>
+                <section id='pfQPwGSLmZaJ9awAw164'>
                     <div class="circlesContainer">
                         <div class="quantityContainer">
-                            <div class="circle"></div>
+                            <div class="circle 15ml"></div>
                             <p>15ml</p>
     
                         </div>
@@ -260,10 +263,10 @@ const htmlContent = `
                 </section>
                 <div class="line"></div>
     
-                <section  class="margin-t-4">
+                <section  class="margin-t-4" id='lYjBEIz8AoM3t70bijtg'>
                     <div class="circlesContainer">
                         <div class="quantityContainer">
-                            <div class="circle"></div>
+                            <div class="circle 15ml"></div>
                             <p>15ml</p>
     
                         </div>
@@ -280,10 +283,10 @@ const htmlContent = `
                 </section>
                 <div class="line"></div>
     
-                <section  class="margin-t-4">
+                <section  class="margin-t-4" id='tqBDsXBYWXhnlKjqLnRZ'>
                     <div class="circlesContainer">
                         <div class="quantityContainer">
-                            <div class="circle"></div>
+                            <div class="circle 15ml"></div>
                             <p>15ml</p>
     
                         </div>
@@ -300,10 +303,10 @@ const htmlContent = `
                 </section>
                 <div class="line"></div>
     
-                <section  class="margin-t-4">
+                <section  class="margin-t-4" id='trXMqjWbaUaLjKVP8uU3'>
                     <div class="circlesContainer">
                         <div class="quantityContainer">
-                            <div class="circle"></div>
+                            <div class="circle 30gr"></div>
                             <p>30gr</p>
     
                         </div>
@@ -324,15 +327,15 @@ const htmlContent = `
                 <h2 class="sectionTitle">
                     HIDRATACIÓN
                 </h2>
-                <section class="margin-t-4">
+                <section class="margin-t-4" id='zqbsUKjCHHAuj8LJuHpP'>
                     <div class="circlesContainer">
                         <div class="quantityContainer">
-                            <div class="circle"></div>
+                            <div class="circle 50gr"></div>
                             <p>50gr</p>
     
                         </div>
                         <div class="quantityContainer">
-                            <div class="circle"></div>
+                            <div class="circle 60gr"></div>
                             <p>60gr</p>
     
                         </div>
@@ -348,15 +351,15 @@ const htmlContent = `
                     </div>
                 </section>
                 <div class="line"></div>
-                <section class="margin-t-4">
+                <section class="margin-t-4" id='at2ov5lTR60Qdkep6Dnk'>
                     <div class="circlesContainer">
                         <div class="quantityContainer">
-                            <div class="circle"></div>
+                            <div class="circle 50gr"></div>
                             <p>50gr</p>
     
                         </div>
                         <div class="quantityContainer">
-                            <div class="circle"></div>
+                            <div class="circle 60gr"></div>
                             <p>60gr</p>
     
                         </div>
@@ -372,10 +375,10 @@ const htmlContent = `
                     </div>
                 </section>
                 <div class="line"></div>
-                <section class="margin-t-4">
+                <section class="margin-t-4" id='fVAL2wPSvDz2w4TAQORl'>
                     <div class="circlesContainer">
                         <div class="quantityContainer">
-                            <div class="circle"></div>
+                            <div class="circle 50gr"></div>
                             <p>50gr</p>
     
                         </div>
@@ -394,7 +397,7 @@ const htmlContent = `
                 <section class="margin-t-4">
                     <div class="circlesContainer">
                         <div class="quantityContainer">
-                            <div class="circle"></div>
+                            <div class="circle 30gr"></div>
                             <p>30gr</p>
     
                         </div>
@@ -410,10 +413,10 @@ const htmlContent = `
                     </div>
                 </section>
                 <div class="line"></div>
-                <section class="margin-t-4">
+                <section class="margin-t-4" id='KwtgM2vfudNWzfMQ0C45'>
                     <div class="circlesContainer">
                         <div class="quantityContainer">
-                            <div class="circle"></div>
+                            <div class="circle 30gr"></div>
                             <p>30gr</p>
     
                         </div>
@@ -434,15 +437,15 @@ const htmlContent = `
                 <h2 class="sectionTitle">
                     TRATAMIENTOS
                 </h2>
-                <section>
+                <section id='cVU5lERr9u8a1kikncC3'>
                     <div class="circlesContainer">
                         <div class="quantityContainer">
-                            <div class="circle"></div>
+                            <div class="circle 75ml"></div>
                             <p>75ml</p>
     
                         </div>
                         <div class="quantityContainer">
-                            <div class="circle"></div>
+                            <div class="circle 150ml"></div>
                             <p>150ml</p>
     
                         </div>
@@ -457,10 +460,10 @@ const htmlContent = `
                     </div>
                 </section>
                 <div class="line"></div>
-                <section class="margin-t-4">
+                <section class="margin-t-4" id='b92MknV7hPW0BelEHxc9'>
                     <div class="circlesContainer">
                         <div class="quantityContainer">
-                            <div class="circle"></div>
+                            <div class="circle 30gr"></div> 
                             <p>30gr</p>
     
                         </div>
@@ -476,10 +479,10 @@ const htmlContent = `
                     </div>
                 </section>
                 <div class="line"></div>
-                <section class="margin-t-4">
+                <section class="margin-t-4" id='MfKEVaEBSeVw3g1ZRsYr'>
                     <div class="circlesContainer">
                         <div class="quantityContainer">
-                            <div class="circle"></div>
+                            <div class="circle 50gr"></div>
                             <p>50gr</p>
     
                         </div>
@@ -495,10 +498,10 @@ const htmlContent = `
                     </div>
                 </section>
                 <div class="line"></div>
-                <section class="margin-t-4">
+                <section class="margin-t-4" id='6Ab86ju2gagEru4za3DY'>
                     <div class="circlesContainer">
                         <div class="quantityContainer">
-                            <div class="circle"></div>
+                            <div class="circle 15gr"></div>
                             <p>15gr</p>
     
                         </div>
@@ -514,10 +517,10 @@ const htmlContent = `
                     </div>
                 </section>
                 <div class="line"></div>
-                <section class="margin-t-4">
+                <section class="margin-t-4" id='rBUTDI3bjhz0acVo4obo'>
                     <div class="circlesContainer">
                         <div class="quantityContainer">
-                            <div class="circle"></div>
+                            <div class="circle 30gr"></div>
                             <p>30gr</p>
     
                         </div>
@@ -533,15 +536,15 @@ const htmlContent = `
                     </div>
                 </section>
                 <div class="line"></div>
-                <section class="margin-t-4">
+                <section class="margin-t-4" id='sAQCq4AqRkglp0eDaBMl'>
                     <div class="circlesContainer">
                         <div class="quantityContainer">
-                            <div class="circle"></div>
+                            <div class="circle 15gr"></div>
                             <p>15gr</p>
     
                         </div>
                         <div class="quantityContainer">
-                            <div class="circle"></div>
+                            <div class="circle 30gr"></div>
                             <p>30gr</p>
     
                         </div>
@@ -570,10 +573,10 @@ const htmlContent = `
             CORPORALES
         </h2>
         
-        <section>
+        <section id='HbxboYmfYFKwsGg9o1K6'>
             <div class="circlesContainer">
                 <div class="quantityContainer">
-                    <div class="circle"></div>
+                    <div class="circle 200gr"></div>
                     <p>200gr</p>
 
                 </div>
@@ -589,15 +592,15 @@ const htmlContent = `
         </section>
         <div class="line"></div>
 
-        <section class="margin-t-4">
+        <section class="margin-t-4" id='628AAqqedsU0ci6Pxhua'>
             <div class="circlesContainer">
                 <div class="quantityContainer">
-                    <div class="circle"></div>
+                    <div class="circle 250gr"></div>
                     <p>250gr</p>
 
                 </div>
                 <div class="quantityContainer">
-                    <div class="circle"></div>
+                    <div class="circle 400gr"></div>
                     <p>400gr</p>
 
                 </div>
@@ -612,15 +615,15 @@ const htmlContent = `
             </div>
         </section>
         <div class="line"></div>
-        <section class="margin-t-4">
+        <section class="margin-t-4" id='eNMJWLK9DEiWQmNmorVf'>
             <div class="circlesContainer">
                 <div class="quantityContainer">
-                    <div class="circle"></div>
+                    <div class="circle 250gr"></div>
                     <p>250gr</p>
 
                 </div>
                 <div class="quantityContainer">
-                    <div class="circle"></div>
+                    <div class="circle 400gr"></div>
                     <p>400gr</p>
 
                 </div>
@@ -646,10 +649,10 @@ const htmlContent = `
         <h2 class="sectionTitle">
             CAPILARES
         </h2>
-        <section >
+        <section id='sV2Wsy6CI6RV6kzPvCu4'>
             <div class="circlesContainer">
                 <div class="quantityContainer">
-                    <div class="circle"></div>
+                    <div class="circle 250ml"></div>
                     <p>250ml</p>
 
                 </div>
@@ -665,10 +668,10 @@ const htmlContent = `
             </div>
         </section>
         <div class="line"></div>
-        <section class="margin-t-4">
+        <section class="margin-t-4" id='oJDC6MUw3sLn8YbcJFKE'>
             <div class="circlesContainer">
                 <div class="quantityContainer">
-                    <div class="circle"></div>
+                    <div class="circle 250ml"></div>
                     <p>250ml</p>
 
                 </div>
@@ -689,10 +692,10 @@ const htmlContent = `
         <h2 class="sectionTitle">
             SUPLEMENTOS DIETARIOS
         </h2>
-        <section >
+        <section id='Fim5zqhQuJ1W3q3xuwpB'>
             <div class="circlesContainer">
                 <div class="quantityContainer">
-                    <div class="circle"></div>
+                    <div class="circle 250gr"></div>
                     <p>250gr</p>
 
                 </div>
@@ -762,8 +765,8 @@ const htmlContent = `
 </div>
 
 <div style="margin-top: 16px; width: 100%; display: flex; justify-content: end; flex-direction: column; align-items: end;">
-    <p>Firmado digitalmente por <span style="font-weight: bold;">Mathe</span></p>
-    <p>Matricula Nº11121315</p>
+    <p>Firmado digitalmente por <span style="font-weight: bold;" id='doctorName'>Mathe</span></p>
+    <p>Matricula Nº<span id='license'>11121315</span></p>
 
 </div>
        

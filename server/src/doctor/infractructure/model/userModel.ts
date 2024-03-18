@@ -2,4 +2,5 @@
 export interface DoctorModel {
     name: string;
     license: number;
+    lastName: string;
   }

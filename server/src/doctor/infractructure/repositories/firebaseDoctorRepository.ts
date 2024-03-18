@@ -14,6 +14,7 @@ export class FirebaseDoctorRepository {
           const doctorData = {
             name: DoctorValue.name,
             license: DoctorValue.license,
+            lastName: DoctorValue.lastName,
           };
     
           const doctorsCollection = collection(db, 'doctors');
@@ -32,7 +33,7 @@ export class FirebaseDoctorRepository {
       const querySnapshot = await getDocs(doctorsCollection);
       const doctors: DoctorEntity[] = [];
 
-      querySnapshot.forEach((doc) => {
+      querySnapshot.forEach((doc: any) => {
         const doctorData = doc.data() as DoctorEntity;
         const doctor: DoctorEntity = { ...doctorData, id: doc.id };
         doctors.push(doctor);
@@ -64,6 +65,7 @@ async updateDoctor(doctorId: string, DoctorValue: DoctorValue): Promise<boolean 
     const doctorData = {
       name: DoctorValue.name,
       license: DoctorValue.license,
+      lastName: DoctorValue.lastName,
     };
 
     await updateDoc(doctorDocRef, doctorData);

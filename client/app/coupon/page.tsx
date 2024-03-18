@@ -55,13 +55,17 @@ export default function Home() {
           });
           sendMessage(false);
         }
-        else {sendEmail(email);
-        console.log(
-          cartItems,
-          cartItems.map((x: any) => x.id)
-        );
+        else {
+          const doctor = JSON.parse(localStorage.getItem("changed") || "false");
+          const products = cartItems.map((x: any)=>{
+            return {
+              id: x.id,
+              quantity: x.quantity
+            }
+          })
+          sendEmail(email, doctor.name, doctor.license, products);
         createRecipe(
-          JSON.parse(localStorage.getItem("changed") as any).license,
+          JSON.parse(localStorage.getItem("changed") as any),
           cartItems.map((x: any) => {
             return {
               name: x.name,
@@ -95,21 +99,25 @@ export default function Home() {
           });
           sendWhatsApp(false);
         }
-        else {sendWhatsapp(whatsAppNumber);
-        console.log(
-          cartItems,
-          cartItems.map((x: any) => x.id)
-        );
-        createRecipe(
-          JSON.parse(localStorage.getItem("changed") as any).license,
-          cartItems.map((x: any) => {
-            return {
-              name: x.name,
-              count: x.count as any,
-              price: x.price,
-              id: x.id,
-            };
-          }) as any
+        else {
+        const doctor = JSON.parse(localStorage.getItem("changed") || "false");
+        const products = cartItems.map((x: any)=>{
+          return {
+            id: x.id,
+            quantity: x.quantity
+          }
+        })
+        sendWhatsapp(whatsAppNumber, doctor.name, doctor.license, products);
+      createRecipe(
+        JSON.parse(localStorage.getItem("changed") as any),
+        cartItems.map((x: any) => {
+          return {
+            name: x.name,
+            count: x.count as any,
+            price: x.price,
+            id: x.id,
+          };
+        }) as any
         );
         clearCart();
         router.push("/thanks");
@@ -159,7 +167,7 @@ export default function Home() {
             cartItems.map(({ count, name, quantity }) => (
               <p key={name} className="subtitle mt-4">
                 <span className="font-bold">{count}un. &nbsp;</span> {name}
-                &nbsp; <span className="text-small">{quantity}ml</span>
+                &nbsp; <span className="text-small">{quantity}</span>
               </p>
             ))
           ) : (
@@ -264,10 +272,13 @@ export default function Home() {
           </div>
           <div className="w-full flex flex-col items-left mt-8">
             {cartItems.length ? (
-              cartItems.map(({ count, name }) => (
+              cartItems.map(({ count, name, quantity }) => (
                 <p key={name} className="subtitle mt-4">
                   <span className="font-bold">{count}un. &nbsp;</span> {name}
+                  &nbsp; <span className="text-small">{quantity}</span>
                 </p>
+                               
+
               ))
             ) : (
               <p className="subtitle mt-4">No agregaste productos al carrito</p>

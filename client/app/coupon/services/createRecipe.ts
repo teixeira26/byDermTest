@@ -1,5 +1,4 @@
 import {BACKEND_URL} from "@/app/models/urls";
-import { product } from "@/app/products/models/products.json";
 
 function obtenerFechaArgentinaISO() {
     let fecha = new Date();
@@ -14,7 +13,7 @@ function obtenerFechaArgentinaISO() {
   obtenerFechaArgentinaISO()
 
 
-const createRecipe = async(license:string, products: any[]) => {
+const createRecipe = async(doctor:any, products: any[]) => {
     await fetch(`${BACKEND_URL}recipes/add`, {
         method: "POST",
         headers: {
@@ -22,10 +21,16 @@ const createRecipe = async(license:string, products: any[]) => {
         },
       
         body: JSON.stringify({
-          doctorLicense: license,
+          doctorLicense: doctor.license,
           date: obtenerFechaArgentinaISO().split('T')[0],
           products: products,
           hour: obtenerFechaArgentinaISO().split("T")[1].split(".")[0],
+          doctorLastName:  doctor.lastName,
+          doctorName: doctor.name,
+          placeOfPurchase: '',
+          purchaseLocality: "",
+          purchaseProvince: "",
+          dateOfPurchase: ""
         })
       }).then((x)=>(x.json()));
     return 

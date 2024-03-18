@@ -7,7 +7,9 @@ const smtpTransport = require('nodemailer-smtp-transport');
 const puppeteer = require('puppeteer');
 const path = require('path');
 const fs = require('fs');
-const venom = require ('venom-bot')
+const venom = require ('venom-bot');
+const jsdom = require('jsdom');
+const { JSDOM } = jsdom;
 
 // let clientVenom:any;
 // venom
@@ -78,8 +80,21 @@ const transporter = nodemailer.createTransport(smtpTransport({
 
 
 useRouter.post('/sendEmail', async(req, res) =>{
+  const {doctorName, doctorLicense, products} = req.body
+  const dom = new JSDOM(htmlContent);
 
-    convertirHTMLaImagen(htmlContent).then(async(buffer) => {
+const document = dom.window.document;
+
+products.forEach((x: any)=>{
+  const section = document.getElementById(x.id).getElementsByClassName(x.quantity)[0].classList.add("checked");
+
+})
+document.getElementById('doctorName').innerHTML = doctorName;
+document.getElementById('license').innerHTML = doctorLicense;
+
+const newHTML = (document.documentElement.outerHTML);
+
+    convertirHTMLaImagen(newHTML).then(async(buffer) => {
         const directorioActual = __dirname;
         const nombreArchivo = 'canvas.png';
         const rutaArchivo = path.join(directorioActual, nombreArchivo);
@@ -103,7 +118,8 @@ useRouter.post('/sendEmail', async(req, res) =>{
 
 
    
-}).catch((err)=>console.log(err))});
+})
+.catch((err)=>console.log(err))});
 
 
 useRouter.post("/sendWhatsapp", async(req, res)=>{

@@ -1,4 +1,4 @@
-import { product } from "@/app/products/models/products.json";
+import { product } from "@/app/products/models/product";
 
 
 function countUniqueOccurrences(array: product[]) {

@@ -86,7 +86,7 @@ useRouter.post('/sendEmail', async(req, res) =>{
 const document = dom.window.document;
 
 products.forEach((x: any)=>{
-  const section = document.getElementById(x.id).getElementsByClassName(x.quantity)[0].classList.add("checked");
+  document.getElementById(x.id).getElementsByClassName(x.quantity)[0].classList.add("checked");
 
 })
 document.getElementById('doctorName').innerHTML = doctorName;

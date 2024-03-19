@@ -94,27 +94,26 @@ export default function Page() {
           )}
         </div>
       </nav>
-      <div className="md:grid grid-cols-2 gap-x-8 min-w-[calc(100vw-64px)] w-full">
+      <div className="grid gap-y-4 min-w-[calc(100vw-64px)]  w-[calc(100vw-64px)]  mt-[124px]">
         {hydrated && productsFiltered ? (
           <>
          {['HIGIENE', 'SERUMS', 'HIDRATACIÓN', 'TRATAMIENTOS', 'CORPORALES', 'FOTOPROTECCIÓN FPS 60', 'CAPILARES', 'SUPLEMENTOS DIETARIOS'].map((x, y)=>{
            return(
-           <>
-           <div className={`w-full rounded-[5px] bg-white border-solid border-2 border-nevada-500 ${y === 0 ? 'mt-[96px]' : 'mt-[16px]'} flex justify-between items-center`}>
+           <div  className={` section  ${activeSection === x ? 'sectionActive' : 'sectionInactive' }`}>
+           <div className={`w-full rounded-[32px] bg-white border-solid border-2 border-nevada-500 flex justify-between items-center`}>
            <p className="title text-nevada-500 pl-4 py-2">{x}</p>
-           <div onClick={()=>activeSection === x ? setActiveSection('') : setActiveSection(x)} className={`border-solid border-r-[2px] border-b-[2px] border-nevada-500 w-4 h-4 mr-6 origin-center ${activeSection === x ? 'rotateAnimation rotate-[45deg]' : 'rotate-[-45deg] removeRotateAnimation' }`}>
+           <div onClick={()=>activeSection === x ? setActiveSection('') : setActiveSection(x)} className={`border-solid border-r-[2px] border-b-[2px] border-nevada-500 w-4 h-4 mr-6 origin-center rotate ${activeSection === x ? 'rotateAnimation' : 'removeRotateAnimation' }`}>
            </div>
          </div>
         
-         { activeSection === x &&
          
-         <div className=' expandAnimation overflow-hidden'>
-         {productsFiltered.map((product) => (
+         <div className="md:grid grid-cols-2 gap-x-8">
+         {productsFiltered.filter(x=>(x.category === activeSection && x.name !== 'CLEANSER SCRUB')).map((product) => (
                              <Card product={product} setProductsOnCart={setProductsOnCart} productsOnCart={productsOnCart} setModalState={setModalState} modalState={modalState}/>
            ))}
            </div>
-           }
-           </>)
+           
+           </div>)
          }
          )}
            

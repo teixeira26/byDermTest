@@ -71,46 +71,27 @@ main{
 .fadein {
   animation: fadeIn .5s;
 }
+.rotate{
+  transition: transform 500ms;
+  transform-origin: center;
+}
 
 .rotateAnimation{
-  animation: rotate .3s;
-
+  transform: rotate(45deg);
 }
 
 .removeRotateAnimation{
-  animation: removeRotate .3s;
+  transform: rotate(-45deg);
 
 }
-.expandAnimation{
-  animation: expand .5s;
-}
+
 
 @keyframes fadeIn {
   0% {opacity: 0;}
   100% {opacity: 1;}
 }
 
-@keyframes rotate {
-  0% {    
-    transform-origin: center;
-    rotate: -45deg;
-  }
-  100% {    
-    transform-origin: center;
-    rotate: 45deg;
-  }
-}
 
-@keyframes removeRotate {
-  0% {
-    transform-origin: center;
-    rotate: 45deg;
-  }
-  100% {
-    transform-origin: center;
-    rotate: -45deg;
-  }
-}
 
 
 @keyframes expand {
@@ -118,3 +99,18 @@ main{
   100% {height: auto;}
 }
 
+
+.section{
+  overflow: hidden;
+  transition: all 500ms ease-in-out;
+}
+
+.sectionInactive{
+  max-height: 90px;
+
+}
+
+.sectionActive{
+  max-height: 9999px;
+
+}

@@ -11,7 +11,7 @@ const signUp = async( doctorName: string,doctorLastName:string, doctorLicense: s
         body: JSON.stringify({
           name: doctorName,
           lastName: doctorLicense,
-          license: doctorLastName
+          license: parseInt(doctorLastName, 10),
         })
       }).then((x)=>(x.json()));
     return 

@@ -10,6 +10,23 @@ type Props = {
     setProductsOnCart: any
 }
 
+
+function formatCurrency(value:any) {
+  // Convertir el valor a un número
+  const numberValue = parseFloat(value);
+
+  // Verificar si el valor es un número válido
+  if (isNaN(numberValue)) {
+      return 'Valor no válido';
+  }
+
+  // Formatear el número como moneda ARS
+  const formattedValue = new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS' }).format(numberValue);
+
+  return formattedValue;
+}
+
+
 export default function Card({product, modalState, setModalState, productsOnCart, setProductsOnCart}: Props) {
     const [quantitySelected, setQuantitySelected]: any = useState(JSON.parse(
         localStorage.getItem("cart") || "[]"
@@ -76,7 +93,7 @@ export default function Card({product, modalState, setModalState, productsOnCart
     
   return (
     <div>
-        <article key={product.imagePath} className="w-full">
+        <article key={product.imagePath} className="mt-[94px] w-full">
               <div className="w-full mt-8 h-[40vh] md:h-[60vh] relative">
                 <img
                   className="rounded-[16px] object-cover w-full h-[40vh] md:h-[60vh] cursor-pointer"
@@ -103,12 +120,12 @@ export default function Card({product, modalState, setModalState, productsOnCart
               </p>
               <p className="text-small mt-4">
                 <span className="font-bold mr-2">
-                  { product.price && product.price.find(x=>x.quantity === quantitySelected)? product.price.find(x=>x.quantity === quantitySelected)?.amount.toFixed(2) as unknown as number - 
-                      (product.price[0].amount.toFixed(2) as unknown as number * product.discount / 100) : product.price && product.price[0] ? product.price[0].amount.toFixed(2) as unknown as number - 
-                      (product.price[0].amount.toFixed(2) as unknown as number * product.discount / 100):'???'}
+                  { product.price && product.price.find(x=>x.quantity === quantitySelected)? formatCurrency(product.price.find(x=>x.quantity === quantitySelected)?.amount.toFixed(2) as unknown as number - 
+                      (product.price[0].amount.toFixed(2) as unknown as number * product.discount / 100)) : product.price && product.price[0] ? formatCurrency(product.price[0].amount.toFixed(2) as unknown as number - 
+                      (product.price[0].amount.toFixed(2) as unknown as number * product.discount / 100)):'???'}
                  
                 </span>
-                <span className="line-through">{product.price && product.price[0].amount.toFixed(2)}</span>
+                <span className="line-through">{product.price && formatCurrency(product.price[0].amount.toFixed(2))}</span>
               </p>
               <p className="text-small mt-2 text-tango-500 font-bold">
                 <span>

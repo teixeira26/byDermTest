@@ -94,14 +94,14 @@ export default function Page() {
           )}
         </div>
       </nav>
-      <div className="grid gap-y-4 min-w-[calc(100vw-64px)]  w-[calc(100vw-64px)]  mt-[124px]">
+      <div className="grid  min-w-[calc(100vw-64px)]  w-[calc(100vw-64px)]  mt-[124px]">
         {hydrated && productsFiltered ? (
           <>
          {['HIGIENE', 'SERUMS', 'HIDRATACIÓN', 'TRATAMIENTOS', 'CORPORALES', 'FOTOPROTECCIÓN FPS 60', 'CAPILARES', 'SUPLEMENTOS DIETARIOS'].map((x, y)=>{
            return(
            <div  className={` section  ${activeSection === x ? 'sectionActive' : 'sectionInactive' }`}>
-           <div className={`w-full rounded-[32px] bg-white border-solid border-2 border-nevada-500 flex justify-between items-center`}>
-           <p className="title text-nevada-500 pl-4 py-2">{x}</p>
+           <div className={`w-full bg-white border-solid border-b-2 border-nevada-100 flex justify-between items-center`}>
+           <p className="title text-nevada-500 pl-4 py-2">{x[0]+x.slice(1).toLowerCase()}</p>
            <div onClick={()=>activeSection === x ? setActiveSection('') : setActiveSection(x)} className={`border-solid border-r-[2px] border-b-[2px] border-nevada-500 w-4 h-4 mr-6 origin-center rotate ${activeSection === x ? 'rotateAnimation' : 'removeRotateAnimation' }`}>
            </div>
          </div>

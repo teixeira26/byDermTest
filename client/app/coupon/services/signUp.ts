@@ -9,9 +9,9 @@ const signUp = async( doctorName: string,doctorLastName:string, doctorLicense: s
       
         //make sure to serialize your JSON body
         body: JSON.stringify({
-          doctorName,
-          doctorLicense,
-          doctorLastName
+          name: doctorName,
+          lastName: doctorLicense,
+          license: doctorLastName
         })
       }).then((x)=>(x.json()));
     return 

@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 3001;
 app.use(morgan('tiny'));
 app.use(express.json());
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://104.131.67.42:3000/', 'http://104.131.67.42'],
+  origin: ['http://localhost:3000', 'http://104.131.67.42:3000/', 'http://104.131.67.42', 'https://bonodigital.byderm.com.ar', 'https://www.bonodigital.byderm.com.ar'],
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
 }));
 

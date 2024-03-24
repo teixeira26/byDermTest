@@ -69,24 +69,21 @@ export default function Page() {
         </div>
       )}
 
-      <nav className="flex items-center justify-between fixed z-40 w-[100vw] bg-white top-0 left-0 pt-8 pb-8">
+      <nav className="flex items-center justify-between fixed z-40 w-[100%] bg-white top-0 left-0 pt-8 pb-8">
         <Image
           className="mr-4 ml-8"
           alt="logo byDerm"
-          width={60}
+          width={124}
           height={60}
           src={"/logo.png"}
         />
       
         <div>
           <Link href="/coupon">
-            <FaCartShopping
-              className="text-tango-500 hover:text-tango-600 active:text-tango-700 mr-8"
-              size={54}
-            />
+            <p className="text-[20px] md:text-[24px] text-white bg-tango-500 px-6 rounded-[4px] py-2 flex flex-wrap mr-8 md:mr-6 text-center">Emitir Receta</p>
           </Link>
           {productsOnCart > 0 && (
-            <div className="absolute bg-white right-[26px] z-50 top-[38px] w-4 h-4 border-2 border-tango-500 rounded-[50%] flex justify-center items-center">
+            <div className="absolute bg-white right-[26px] z-50 top-[28px] w-4 h-4 border-2 border-tango-500 rounded-[50%] flex justify-center items-center">
               <p className="text-tango-500 text-[12px] font-bold ">
                 {productsOnCart}
               </p>
@@ -94,20 +91,20 @@ export default function Page() {
           )}
         </div>
       </nav>
-      <div className="grid  min-w-[calc(100vw-64px)]  w-[calc(100vw-64px)]  mt-[124px]">
+      <div className="grid  min-w-[calc(100vw-64px)]  w-[calc(100vw-64px)]  mt-[96px] md:mt-[124px]">
         {hydrated && productsFiltered ? (
           <>
-         {['HIGIENE', 'SERUMS', 'HIDRATACIÓN', 'TRATAMIENTOS', 'CORPORALES', 'FOTOPROTECCIÓN FPS 60', 'CAPILARES', 'SUPLEMENTOS DIETARIOS'].map((x, y)=>{
+         {['HIGIENE', 'SERUMS', 'HIDRATACIÓN', 'TRATAMIENTOS', 'CORPORALES', 'FOTOPROTECCIÓN', 'CAPILARES', 'SUPLEMENTOS DIETARIOS'].map((x, y)=>{
            return(
            <div  className={` section  ${activeSection === x ? 'sectionActive' : 'sectionInactive' }`}>
-           <div className={`w-full bg-white border-solid border-b-2 border-nevada-100 flex justify-between items-center`}>
-           <p className="title text-nevada-500 pl-4 py-2">{x[0]+x.slice(1).toLowerCase()}</p>
-           <div onClick={()=>activeSection === x ? setActiveSection('') : setActiveSection(x)} className={`border-solid border-r-[2px] border-b-[2px] border-nevada-500 w-4 h-4 mr-6 origin-center rotate ${activeSection === x ? 'rotateAnimation' : 'removeRotateAnimation' }`}>
+           <div className={`w-full bg-tango-500 border-solid border-b-2 rounded-[4px] mb-4 flex justify-between items-center`}>
+           <p className="subtitle text-white pl-4 py-2">{x}</p>
+           <div onClick={()=>activeSection === x ? setActiveSection('') : setActiveSection(x)} className={`border-solid border-r-[2px] border-b-[2px] border-white w-4 h-4 mr-6 origin-center rotate ${activeSection === x ? 'rotateAnimation' : 'removeRotateAnimation' }`}>
            </div>
          </div>
         
          
-         <div className="md:grid grid-cols-2 gap-x-8">
+         <div className={`md:grid grid-cols-2 gap-x-8  ${activeSection === x ? 'mb-8 mt-[-52px] ' : '' }`}>
          {productsFiltered.filter(x=>(x.category === activeSection && x.name !== 'CLEANSER SCRUB')).map((product) => (
                              <Card product={product} setProductsOnCart={setProductsOnCart} productsOnCart={productsOnCart} setModalState={setModalState} modalState={modalState}/>
            ))}

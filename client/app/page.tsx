@@ -15,6 +15,7 @@ export default function Home() {
   const [error, setError] = useState(false);
   const [checkUser, setCheckUser] = useState(false);
   const [signUpLogin, setSignUpLogin] = useState(false);
+  const [signUpError, setSignUpError] = useState(false);
 
 
   const [doctorName, setDoctorName] = useState('');
@@ -79,12 +80,16 @@ export default function Home() {
           className="fixed left-0 top-0 fadein flex justify-center p-4 items-center bg-[#00000030] z-[50] w-[100vw] h-[100vh]"
     
         >
-          <div className="z-[100] bg-white rounded-[16px] flex-col text-left gap-4 p-4 md:p-16 flex justify-left items-left">
+          <div className="z-[100] px-8 py-4 bg-white rounded-[16px] flex-col text-left gap-4 p-4 md:py-4 md:py-8 flex justify-left items-left">
             
-            <div onClick={()=>setSignUpLogin(!signUpLogin)} className='cursor-pointer flex justify-end text-red-400 font-bold'>
+            <div className="flex justify-between md:items-center">
+            
+            <p className="block subtitle">Crear una nueva cuenta</p>
+            <div onClick={()=>setSignUpLogin(!signUpLogin)} className='ml-8 cursor-pointer flex justify-end text-red-400 font-bold'>
             <p className="">X</p>
             </div>
-            <p className="block subtitle">Crear una nueva cuenta</p>
+            </div>
+           
             <div className="flex gap-4 flex-col  text-white">
               <label htmlFor="matricula" className="text-gray-500 text-[12px]">
                 {" "}
@@ -92,39 +97,57 @@ export default function Home() {
               </label>
               <input
                 type="text"
-                className="border-solid border-[1px] px-4 py-2 text-black"
+                className={`border-solid border-[1px] px-4 py-2 text-black ${(signUpError && !/^[a-zA-Z]+$/.test(doctorName))? 'border-red-500' : 'border-black'}`}
                 name="matricula"
                 placeholder="Fernando"
                 onChange={(e)=>setDoctorName(e.target.value)}
               />
+               {(signUpError && !/^[a-zA-Z]+$/.test(doctorName)) &&
+              <p className="text-red-500 mt-[-8px]">
+              Debés ingresar un nombre válido
+            </p>
+              }
               <label htmlFor="matricula" className="text-gray-500 text-[12px]">
                 {" "}
                 Apellido
               </label>
               <input
                 type="text"
-                className="border-solid border-[1px] px-4 py-2 text-black"
+                className={`border-solid border-[1px] px-4 py-2 text-black ${(signUpError && !/^[a-zA-Z]+$/.test(doctorLastName))? 'border-red-500' : 'border-black'}`}
                 name="matricula"
                 placeholder="Perez"
                 onChange={(e)=>setDoctorLastName(e.target.value)}
 
               />
+              {(signUpError && !/^[a-zA-Z]+$/.test(doctorLastName)) &&
+              <p className="text-red-500 mt-[-8px]">
+              Debés ingresar un apellido válido
+            </p>
+              }
               <label htmlFor="matricula" className="text-gray-500 text-[12px]">
                 {" "}
                 Nº de Matricula
               </label>
               <input
-                type="text"
-                className="border-solid border-[1px] px-4 py-2 text-black"
+                type="number"
+                className={`border-solid border-[1px] px-4 py-2 text-black ${(signUpError && !/^\d{3,}$/.test(doctorLicense)) ? 'border-red-500' : 'border-black'} `}
                 name="matricula"
                 placeholder="123213"
-                onChange={(e)=>setDoctorLicense(e.target.value)}
+                onChange={(e)=>{
+                  setDoctorLicense(e.target.value)
+                }}
               />
+               {(signUpError && !/^\d{3,}$/.test(doctorLicense)) &&
+              <p className="text-red-500 mt-[-8px]">
+              Debés ingresar un número de matricula válido
+            </p>
+              }
               <button
-                className="py-[4px] px-2 bg-nevada-500 rounded-[16px]"
+                className={`py-[4px] px-2 rounded-[16px] ${signUpError ? 'bg-nevada-500 ' : 'bg-tango-500'}`}
                 onClick={async () => {
                   try {
-                    await signUp(doctorName, doctorLastName, doctorLicense)
+                    if((/^[a-zA-Z]+$/.test(doctorName) && doctorName.length > 0) && (/^[a-zA-Z]+$/.test(doctorLastName) && doctorLastName.length > 0) && (/^\d{3,}$/.test(doctorLicense) && doctorLicense.length > 0)){
+                      await signUp(doctorName, doctorLastName, doctorLicense)
                     Swal.fire({
                       position: "bottom-start",
                       icon: "success",
@@ -132,7 +155,10 @@ export default function Home() {
                       showConfirmButton: false,
                       timer: 1500,
                     });
-                 setSignUpLogin(!signUpLogin)
+                 setSignUpLogin(!signUpLogin)}
+                 else{
+                  setSignUpError(true)
+                 }
                   } catch (error) {
                     Swal.fire({
                       position: "bottom-start",

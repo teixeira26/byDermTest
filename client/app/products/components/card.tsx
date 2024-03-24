@@ -119,13 +119,15 @@ export default function Card({product, modalState, setModalState, productsOnCart
                 {product.activeIngredient}
               </p>
               <p className="text-small mt-4">
+               
+                <span className="line-through mr-2">{product.price && formatCurrency(product.price[0].amount.toFixed(2))}</span>
+              
                 <span className="font-bold mr-2">
                   { product.price && product.price.find(x=>x.quantity === quantitySelected)? formatCurrency(product.price.find(x=>x.quantity === quantitySelected)?.amount.toFixed(2) as unknown as number - 
                       (product.price[0].amount.toFixed(2) as unknown as number * product.discount / 100)) : product.price && product.price[0] ? formatCurrency(product.price[0].amount.toFixed(2) as unknown as number - 
                       (product.price[0].amount.toFixed(2) as unknown as number * product.discount / 100)):'???'}
                  
                 </span>
-                <span className="line-through">{product.price && formatCurrency(product.price[0].amount.toFixed(2))}</span>
               </p>
               <p className="text-small mt-2 text-tango-500 font-bold">
                 <span>

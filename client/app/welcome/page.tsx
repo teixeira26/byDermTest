@@ -56,7 +56,7 @@ export default function Home() {
         <Image
           className="mb-8"
           alt="logo byDerm"
-          width={64}
+          width={124}
           height={64}
           src={"/logo.png"}
         />
@@ -102,7 +102,7 @@ export default function Home() {
             <Image
               className="mb-8"
               alt="logo byDerm"
-              width={64}
+              width={124}
               height={64}
               src={"/logo.png"}
             />

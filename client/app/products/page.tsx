@@ -83,7 +83,7 @@ export default function Page() {
             <p className="text-[20px] md:text-[24px] text-white bg-tango-500 px-6 rounded-[4px] py-2 flex flex-wrap mr-8 md:mr-6 text-center">Emitir Receta</p>
           </Link>
           {productsOnCart > 0 && (
-            <div className="absolute bg-white right-[26px] z-50 top-[28px] w-4 h-4 border-2 border-tango-500 rounded-[50%] flex justify-center items-center">
+            <div className="absolute bg-white right-[26px] md:right-[20px] z-50 top-[28px] w-4 h-4 border-2 border-tango-500 rounded-[50%] flex justify-center items-center">
               <p className="text-tango-500 text-[12px] font-bold ">
                 {productsOnCart}
               </p>
@@ -94,19 +94,23 @@ export default function Page() {
       <div className="grid  min-w-[calc(100vw-64px)]  w-[calc(100vw-64px)]  mt-[96px] md:mt-[124px]">
         {hydrated && productsFiltered ? (
           <>
-         {['HIGIENE', 'SERUMS', 'HIDRATACIÓN', 'TRATAMIENTOS', 'CORPORALES', 'FOTOPROTECCIÓN', 'CAPILARES', 'SUPLEMENTOS DIETARIOS'].map((x, y)=>{
+         {['HIGIENE', 'SERUMS', 'HIDRATACIÓN', 'TRATAMIENTOS', 'CORPORALES', 'CAPILARES', 'SUPLEMENTOS DIETARIOS'].map((x, y)=>{
            return(
-           <div  className={` section  ${activeSection === x ? 'sectionActive' : 'sectionInactive' }`}>
-           <div className={`w-full bg-tango-500 border-solid border-b-2 rounded-[4px] mb-4 flex justify-between items-center`}>
+           <div title={x} className={`cursor-pointer section  ${activeSection === x ? 'sectionActive' : 'sectionInactive' }`}>
+           <div  onClick={()=>activeSection === x ? setActiveSection('') : setActiveSection(x)}  className={`w-full bg-tango-500 border-solid border-b-2 rounded-[4px] mb-4 flex justify-between items-center`}>
            <p className="subtitle text-white pl-4 py-2">{x}</p>
-           <div onClick={()=>activeSection === x ? setActiveSection('') : setActiveSection(x)} className={`border-solid border-r-[2px] border-b-[2px] border-white w-4 h-4 mr-6 origin-center rotate ${activeSection === x ? 'rotateAnimation' : 'removeRotateAnimation' }`}>
+           <div className={`border-solid border-r-[2px] border-b-[2px] border-white w-4 h-4 mr-6 origin-center rotate ${activeSection === x ? 'rotateAnimation' : 'removeRotateAnimation' }`}>
            </div>
          </div>
         
          
-         <div className={`md:grid grid-cols-2 gap-x-8  ${activeSection === x ? 'mb-8 mt-[-52px] ' : '' }`}>
-         {productsFiltered.filter(x=>(x.category === activeSection && x.name !== 'CLEANSER SCRUB')).map((product) => (
-                             <Card product={product} setProductsOnCart={setProductsOnCart} productsOnCart={productsOnCart} setModalState={setModalState} modalState={modalState}/>
+         <div className={`flex flex-col  ${activeSection === x ? 'mb-8 mt-[-52px] ' : '' }`}>
+         {productsFiltered.filter(x=>(x.category === activeSection && x.name !== 'CLEANSER SCRUB')).map((product, index) => (
+              <div className={`${index === 0 ? 'mt-[48px]' : ''}`}>
+                <Card product={product} setProductsOnCart={setProductsOnCart} productsOnCart={productsOnCart} setModalState={setModalState} modalState={modalState}/>
+
+              </div>
+
            ))}
            </div>
            

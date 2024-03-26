@@ -13,6 +13,43 @@
       ]
     },
     {
+      "category": "FOTOPROTECCIÓN",
+      "quantity": ["60gr"],
+      "name": "BY BLOCK",
+      "discount": 25,
+      "vehicle": "CREMA FPS 60 CON FILTRO UVA27 Y UVB",
+      "activeIngredient": "Ectoína + D.Titanio + Hamamelis + A.Vera + M.Karite + C.Levadura",
+      "productFunction": "SUPER HIDRATANTE Y DESCONGESTIVO",
+      "price": [
+        {"quantity": "60gr", "amount": 19698.2},
+      ]
+    },
+    {
+      "category": "FOTOPROTECCIÓN",
+      "quantity": ["75gr"],
+      "name": "BY BLOCK FLUID",
+      "discount": 25,
+      "vehicle": "CREMA FLUIDA FPS 60 CON FILTRO UVA27 Y UVB",
+      "activeIngredient": "Ectoína + D.Titanio + Hamamelis + A.Vera + M.Karite + C.Levadura",
+      "productFunction": "SUPER HIDRATANTE Y DESCONGESTIVO",
+      "price": [
+        {"quantity": "75gr", "amount": 20413.16},
+      ]
+    },
+
+    {
+      "category": "FOTOPROTECCIÓN",
+      "quantity": ["75gr"],
+      "name": "BY BLOCK FLUID",
+      "discount": 25,
+      "vehicle": "CREMA FLUIDA FPS 60 CON FILTRO UVA27 Y UVB",
+      "activeIngredient": "Ectoína + D.Titanio + Hamamelis + A.Vera + M.Karite + C.Levadura",
+      "productFunction": "SUPER HIDRATANTE Y DESCONGESTIVO",
+      "price": [
+        {"quantity": "75gr", "amount": 20413.16},
+      ]
+    },
+    {
       "category": "HIGIENE",
       "quantity": ["100gr", "150gr"],
       "name": "CLEANSER MILK",

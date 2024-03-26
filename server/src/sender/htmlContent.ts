@@ -1,4 +1,5 @@
 const htmlContent = `
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,6 +48,7 @@ const htmlContent = `
         .circlesContainer{
             display: flex;
             gap:8px;
+            font-weight: bold;
         }
 
        .circle{
@@ -54,6 +56,8 @@ const htmlContent = `
         border-radius: 50%;
         width: 24px;
         height: 24px;
+        min-width: 24px;
+        min-height: 24px;
        }
 
        .quantityContainer{
@@ -81,6 +85,7 @@ const htmlContent = `
 
     .badge{
         font-size: 12px;
+        
     }
 
     .activeIngredient{
@@ -100,6 +105,10 @@ const htmlContent = `
         border-radius: 16px;
         font-size: 12px;
         text-align: center;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+
     }
     .infoContainer{
         width: 100%;
@@ -642,7 +651,74 @@ const htmlContent = `
         <h2 class="sectionTitle">
             FOTOPROTECCIÓN FPS 60
         </h2>
-      
+        <section id=''>
+           
+            <div>
+                <div class=''>
+                    <h3 class="company"><span class="product">BY BLOCK</span><span class="badge">CREMA FPS 60 CON FILTRO UVA27 Y UVB</span></h3>
+                    <div class="adicionalInformationContent">
+                        <p class="activeIngredient">Ectoína + D.Titanio + Hamamelis + A.Vera + M.Karite + C.Levadura</p>
+                        
+                    </div>
+                </div>
+                <div  class="circlesContainer">
+                    <div style="display: flex; align-items: center; font-weight: bold;">
+                        <p>60gr.</p>
+
+                    </div>
+                    <div style="display: flex; align-items: center; font-size: 12px; font-weight: bold;" class="">
+                        <div class="circle tonoclaro"></div>
+                        <p>TONO CLARO</p>
+    
+                    </div>
+                    <div style="display: flex; align-items: center; font-size: 12px; font-weight: bold;" class="">
+                        <div class="circle tonooscuro"></div>
+                        <p>TONO OSCURO</p>
+    
+                    </div>
+                    <div style="display: flex; align-items: center; font-size: 12px; font-weight: bold;" class="">
+                        <div class="circle blancoclasico"></div>
+                        <p>BLANCO CLÁSICO</p>
+    
+                    </div>
+                    <p class="contentBadge">SUPER HIDRATANTE Y DESCONGESTIVO</p>
+                </div>
+            </div>
+           
+        </section>
+        <div class="line"></div>
+
+        <section class="margin-t-4" id=''>
+           
+            <div>
+                <div class=''>
+                    <h3 class="company"><span class="product">BY BLOCK FLUID</span><span class="badge">CREMA FLUIDA FPS 60 CON FILTRO UVA27 Y UVB</span></h3>
+                    <div class="adicionalInformationContent">
+                        <p class="activeIngredient">Ectoína + D.Titanio + Hamamelis + A.Vera + M.Karite + C.Levadura</p>
+                        
+                    </div>
+                </div>
+                <div  class="circlesContainer">
+                    <div style="display: flex; align-items: center; font-weight: bold;">
+                        <p>75gr.</p>
+
+                    </div>
+                    <div style="display: flex; align-items: center; font-size: 12px; font-weight: bold;" class="">
+                        <div class="circle tonoclaro"></div>
+                        <p>TONO CLARO</p>
+    
+                    </div>
+                    <div style="display: flex; align-items: center; font-size: 12px; font-weight: bold;" class="">
+                        <div class="circle tonooscuro"></div>
+                        <p>TONO MEDIO</p>
+    
+                    </div>
+                  
+                    <p class="contentBadge">SUPER HIDRATANTE Y DESCONGESTIVO</p>
+                </div>
+            </div>
+           
+        </section>
      </article>
      <article>
  
@@ -687,6 +763,34 @@ const htmlContent = `
             </div>
         </section>
         <div class="line"></div>
+        <section style="width: 100%;" class="margin-t-4" id='sV2Wsy6CI6RV6kzPvCu4'>
+            <div style="width: 100%;">
+                <div class='infoContainer'>
+                    <div style="display: flex; justify-content: space-between; width: 100%">
+                        <h3 class="company"><span class="product">CAPILAR FORTE</span><span class="badge">SUPLEMENTO EN CÁPSULAS</span></h3>                        <p class="contentBadge">FORTALECEDOR</p>
+                    </div>
+                   
+
+                    <div class="adicionalInformationContent">
+                        <p class="activeIngredient">L-Cistina 500mg + Metionina + Biotina + B6 + Calcio + Colágeno</p>
+                    </div>
+                </div>
+                <div class="circlesContainer">
+                    <div style="display: flex; flex-direction: row;" class="quantityContainer">
+                        <div class="circle 30capsulas"></div>
+                        <p>30 CÁPSULAS</p>
+    
+                    </div>
+                    <div style="display: flex; flex-direction: row;" class="quantityContainer">
+                        <div class="circle 60capsulas"></div>
+                        <p>60 CÁPSULAS</p>
+    
+                    </div>
+                </div>
+            </div>
+
+           
+        </section>
      </article>
      <article>
         <h2 class="sectionTitle">
@@ -776,5 +880,4 @@ const htmlContent = `
 </body>
 </html>
 `
-
 export default htmlContent;

@@ -44,7 +44,7 @@ export default function Card({
   useEffect(()=>{
     const item = product;
     console.log(product)
-    const quantity = product.quantity[0]
+    const quantity = product.quantity
     const previousLocalStorageContent = JSON.parse(
       localStorage.getItem("cart") || "[]"
     );
@@ -91,10 +91,7 @@ export default function Card({
     if (selectedItem) {
       removeProductsFromCart(item, quantity);
     } else {
-      const quantitysToRemove = item.quantity.filter((x) => x !== quantity);
-      quantitysToRemove.map((x) => {
-        removeProductsFromCart(item, x);
-      });
+        removeProductsFromCart(item, quantity)
       addProductToCart(item, quantity);
     }
   };
@@ -133,14 +130,17 @@ export default function Card({
 
   return (
     <div>
+       <p title={product.name}
+className="text-[20px] font-bold my-4">{product.name}</p>
       <article
         key={product.imagePath}
         className="mt-4 w-full flex gap-4  h-fit"
       >
+        
         <div className="flex flex-col gap-4  h-fit">
           {product &&
             product.quantity &&
-            product.quantity.slice(0, 1).map((x) => {
+            product.quantity.map((x: any) => {
               return (
                 <div className="flex justify-center flex-col items-center gap-2 accent-tango-600">
                   <input
@@ -165,11 +165,10 @@ export default function Card({
         </div>
 
         <div className="max-w-[150px] sm:max-w-[150px] md:max-w-96">
-          <p title={product.name}
-className="text-[20px] font-bold ">{product.name}</p>
+         
           <p
             title={product.vehicle}
-            className="text-[16px] mt-2 w-[calc(100%-32px)]"
+            className="text-[16px] w-[calc(100%-32px)]"
           >
             {product.vehicle}
           </p>
@@ -216,20 +215,14 @@ className="text-[20px] font-bold ">{product.name}</p>
           </p>
 
           <div className="flex justify-between mt-2 mb-4 items-center">
-            <p className="text-small text-tango-500 font-bold ">
-              <span>
-                <Image
-                  width={16}
-                  height={16}
-                  src="/discount.png"
-                  alt="descuento"
-                  className="mr-2 inline"
-                />
+            <p className="text-[12px] text-white bg-tango-500 rounded-[50%] max-h-[50px] max-w-[50px] p-3 text-center font-bold ">
+              25%
+              <span className="block text-[10px] mt-[-4px]">
+                off
               </span>
-              -25%
             </p>
 
-            <p title={product.productFunction} className="text-small bg-nevada-500 inline text-white px-[12px] text-center w-fit py-[4px] rounded-[16px] h-fit">
+            <p title={product.productFunction} className="text-small bg-nevada-500 inline max-w-[180px] text-white px-[12px] text-center w-fit py-[4px] rounded-[16px] h-fit">
               {product.productFunction}
             </p>
           </div>

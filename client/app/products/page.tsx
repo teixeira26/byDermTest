@@ -94,11 +94,11 @@ export default function Page() {
       <div className="grid  min-w-[calc(100vw-64px)]  w-[calc(100vw-64px)]  mt-[96px] md:mt-[124px]">
         {hydrated && productsFiltered ? (
           <>
-         {['HIGIENE', 'SERUMS', 'HIDRATACIÓN', 'TRATAMIENTOS', 'CORPORALES', 'CAPILARES', 'SUPLEMENTOS DIETARIOS'].map((x, y)=>{
+         {['HIGIENE', 'SERUMS', 'HIDRATACIÓN', 'TRATAMIENTOS', 'CORPORALES', 'FOTOPROTECCIÓN', 'CAPILARES', 'SUPLEMENTOS DIETARIOS'].map((x, y)=>{
            return(
            <div title={x} className={`cursor-pointer section  ${activeSection === x ? 'sectionActive' : 'sectionInactive' }`}>
-           <div  onClick={()=>activeSection === x ? setActiveSection('') : setActiveSection(x)}  className={`w-full bg-tango-500 border-solid border-b-2 rounded-[4px] mb-4 flex justify-between items-center`}>
-           <p className="subtitle text-white pl-4 py-2">{x}</p>
+           <div  onClick={()=>activeSection === x ? setActiveSection('') : setActiveSection(x)}  className={`w-full bg-tango-500 border-solid border-b-2 rounded-[32px] mb-4 flex justify-between items-center`}>
+           <p className="subtitle text-white font-bold pl-4 py-2">{x}</p>
            <div className={`border-solid border-r-[2px] border-b-[2px] border-white w-4 h-4 mr-6 origin-center rotate ${activeSection === x ? 'rotateAnimation' : 'removeRotateAnimation' }`}>
            </div>
          </div>

@@ -100,11 +100,11 @@ className="text-[20px] font-bold my-4">{product.name}</p>
                 <div className="flex w-[60px] truncate max-w-[60px] overflow-hidden justify-center flex-col items-center gap-2 accent-tango-600">
                   <input
                     onClick={() => changeCart(product, x)}
-                    type="radio"
+                    type="checkbox"
                     checked={quantitySelected == product.quantity[0]}
-                    className="w-6 h-6"
+                    className="w-6 h-6 rounded-[50%]"
                   />
-                  <label className="w-[60px] elipse" htmlFor="radio ">{x}</label>
+                  <label className="w-[60px] elipse text-center" htmlFor="radio ">{x}</label>
                 </div>
               );
             })}

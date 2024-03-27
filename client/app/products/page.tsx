@@ -92,7 +92,9 @@ export default function Page() {
         </div>
       </nav>
       <div className="grid  min-w-[calc(100vw-64px)]  w-[calc(100vw-64px)]  mt-[96px] md:mt-[124px]">
-        {hydrated && productsFiltered ? (
+        {
+        hydrated && productsFiltered 
+        ? (
           <>
          {['HIGIENE', 'SERUMS', 'HIDRATACIÓN', 'TRATAMIENTOS', 'CORPORALES', 'FOTOPROTECCIÓN', 'CAPILARES', 'SUPLEMENTOS DIETARIOS'].map((x, y)=>{
            return(
@@ -120,7 +122,7 @@ export default function Page() {
            
             </>
         ) : (
-          <div className="z-50 flex justify-center">
+          <div className=" flex justify-center">
             <div>
               <ContentLoader
                 speed={2}
@@ -130,9 +132,16 @@ export default function Page() {
                 backgroundColor="#f3f3f3"
                 foregroundColor="#ecebeb"
               >
-                <rect x="8" y="500" rx="16" ry="16" width="380" height="400" />
-                <rect x="8" y="928" rx="2" ry="2" width="300" height="40" />
-                <rect x="8" y="988" rx="2" ry="2" width="250" height="18" />
+                <rect x="8" y="420" rx="16" ry="32" width="300" height="40" />
+                <rect x="8" y="492" rx="16" ry="64" width="300" height="40" />
+                <rect x="8" y="564" rx="16" ry="64" width="300" height="40" />
+                <rect x="8" y="636" rx="16" ry="64" width="300" height="40" />
+                <rect x="8" y="708" rx="16" ry="64" width="300" height="40" />
+                <rect x="8" y="780" rx="16" ry="64" width="300" height="40" />
+                <rect x="8" y="852" rx="16" ry="64" width="300" height="40" />
+                <rect x="8" y="924" rx="16" ry="64" width="300" height="40" />
+
+
               </ContentLoader>
             </div>
           </div>

@@ -112,6 +112,13 @@ main{
   width: 100%;
 }
 
+.elipse {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
 .sectionInactive{
   max-height: 70px;
 

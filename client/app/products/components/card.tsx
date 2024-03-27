@@ -35,98 +35,53 @@ export default function Card({
   productsOnCart,
   setProductsOnCart,
 }: Props) {
-  const [quantitySelected, setQuantitySelected]: any = useState(
-    JSON.parse(localStorage.getItem("cart") || "[]").find(
-      (x: any) => x.name === product.name
-    )?.quantity
-  );
 
-  useEffect(()=>{
-    const item = product;
-    console.log(product)
-    const quantity = product.quantity
-    const previousLocalStorageContent = JSON.parse(
-      localStorage.getItem("cart") || "[]"
-    );
-    const selectedItem = previousLocalStorageContent.find((x: any) => {
-      if (
-        x.name === product.name 
-      )
-        return { ...item, quantity };
-    });
-    if(selectedItem)setQuantitySelected(quantity)
-    console.log('>>>>>>>>>>>>>>>>',selectedItem, product, previousLocalStorageContent, '>>>>>>>>>>>>>>>>', quantitySelected)
-  },[])
-  const modalToggle = () => {
-    setModalState(!modalState);
-    const body = document.getElementsByTagName("body")[0];
-    if (modalState)
-      body.className =
-        body.className
-          .split(" overflow-visible")
-          .join("")
-          .split(" overflow-visible")
-          .join("") + " overflow-visible";
-    else
-      body.className =
-        body.className
-          .split(" overflow-hidden")
-          .join("")
-          .split(" overflow-visible")
-          .join("") + " overflow-hidden";
-  };
+  const [quantitySelected, setQuantitySelected] = useState('');
 
-  const changeCart = (item: product, quantity: any) => {
-    const previousLocalStorageContent = JSON.parse(
-      localStorage.getItem("cart") || "[]"
-    );
-    const selectedItem = previousLocalStorageContent.find((x: any) => {
-      if (
-        x.name === { ...item, quantity }.name &&
-        x.quantity === { ...item, quantity }.quantity
-      )
-        return { ...item, quantity };
+  useEffect(() => {
+    const cartItems = JSON.parse(localStorage.getItem("cart") || "[]");
+    const selectedItem = cartItems.find((item:any) => {
+      return item.name === product.name;
     });
 
     if (selectedItem) {
+      setQuantitySelected(selectedItem.quantity);
+    }
+  }, [product]);
+
+  const modalToggle = () => {
+    setModalState(!modalState);
+    const body = document.getElementsByTagName("body")[0];
+    body.className = modalState ? body.className.replace(" overflow-visible", "") + " overflow-hidden" : body.className.replace(" overflow-hidden", "") + " overflow-visible";
+  };
+
+  const changeCart = (item:any, quantity:any) => {
+    const previousLocalStorageContent = JSON.parse(localStorage.getItem("cart") || "[]");
+    const selectedItem = previousLocalStorageContent.find((x:any) => x.name === item.name && x.quantity === quantity);
+    if (selectedItem) {
       removeProductsFromCart(item, quantity);
     } else {
-        removeProductsFromCart(item, quantity)
       addProductToCart(item, quantity);
     }
   };
 
-  const addProductToCart = (item: product, quantity: any) => {
-    const previousLocalStorageContent = JSON.parse(
-      localStorage.getItem("cart") || "[]"
-    );
-    localStorage.setItem(
-      "cart",
-      JSON.stringify([...previousLocalStorageContent, { ...item, quantity }])
-    );
-    setProductsOnCart(
-      [...previousLocalStorageContent, { ...item, quantity }].length
-    );
-    modalToggle();
-    setQuantitySelected(quantity);
-  };
-
-  const removeProductsFromCart = (item: product, quantity: any) => {
-    const previousLocalStorageContent = JSON.parse(
-      localStorage.getItem("cart") || "[]"
-    );
-    const newCart = previousLocalStorageContent.filter(
-      (x: any) =>
-        x.name !== { ...item, quantity }.name &&
-        x.quantity !== { ...item, quantity }.quantity
-    );
-    console.log(newCart);
-
+  const addProductToCart = (item:any, quantity:any) => {
+    const previousLocalStorageContent = JSON.parse(localStorage.getItem("cart") || "[]");
+    const newCart = [...previousLocalStorageContent, { ...item, quantity }];
     localStorage.setItem("cart", JSON.stringify(newCart));
-
     setProductsOnCart(newCart.length);
-    setQuantitySelected();
+    setQuantitySelected(quantity);
+    modalToggle();
   };
+
+  const removeProductsFromCart = (item:any, quantity:any) => {
+    const previousLocalStorageContent = JSON.parse(localStorage.getItem("cart") || "[]");
+    const newCart = previousLocalStorageContent.filter((x:any) => x.name !== item.name || x.quantity !== quantity);
+    localStorage.setItem("cart", JSON.stringify(newCart));
+    setProductsOnCart(newCart.length);
+    setQuantitySelected('');
+  };
+
 
   return (
     <div>
@@ -142,15 +97,14 @@ className="text-[20px] font-bold my-4">{product.name}</p>
             product.quantity &&
             product.quantity.map((x: any) => {
               return (
-                <div className="flex justify-center flex-col items-center gap-2 accent-tango-600">
+                <div className="flex w-[60px] truncate max-w-[60px] overflow-hidden justify-center flex-col items-center gap-2 accent-tango-600">
                   <input
                     onClick={() => changeCart(product, x)}
                     type="radio"
-                    name={`quantity${product.name}`}
                     checked={quantitySelected == product.quantity[0]}
                     className="w-6 h-6"
                   />
-                  <label htmlFor="radio">{x}</label>
+                  <label className="w-[60px] elipse" htmlFor="radio ">{x}</label>
                 </div>
               );
             })}

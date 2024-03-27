@@ -86,7 +86,28 @@ useRouter.post('/sendEmail', async(req, res) =>{
 const document = dom.window.document;
 
 products.forEach((x: any)=>{
-  document.getElementById(x.id).getElementsByClassName(x.quantity)[0].classList.add("checked");
+  switch (x.id) {
+    case '2uh771rOX6HWiO7plKEn':
+      x = {...x, quantity: 'blancoclasico'}
+      break;
+      case '8IAmxlvLfnz71mdZ6KGy':
+        x = {...x, quantity: 'tonooscuro'}
+        break;
+        case 'L80CWGjIhk00DdCVdSPQ':
+      x = {...x, quantity: 'tonoclaro'}
+      break;
+      case 'YlvtHFTv1oVSVsIQTLQ8':
+      x = {...x, quantity: 'tonoclaro'}
+      break;
+      case 'vg8p3fx6Am1ieSR7XupP':
+      x = {...x, quantity: 'tonomedio'}
+      break;
+    default:
+      x = x;
+      break;
+  }
+  console.log(x)
+  document.getElementsByClassName(x.id)[0].getElementsByClassName(x.quantity)[0].classList.add("checked");
 
 })
 document.getElementById('doctorName').innerHTML = doctorName;
@@ -100,7 +121,6 @@ const newHTML = (document.documentElement.outerHTML);
         const rutaArchivo = path.join(directorioActual, nombreArchivo);
         fs.writeFileSync(rutaArchivo, buffer);
         await convertirImagenAPDF(rutaArchivo, 'archive.pdf')
-        console.log(req.body)
         const email = req.body.email
         const configEmail = {
             from: "bonodigital@byderm.com.ar",

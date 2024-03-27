@@ -15,6 +15,30 @@
     {
       "category": "FOTOPROTECCIÓN",
       "quantity": ["60gr"],
+      "name": "BY BLOCK BLANCO CLÁSICO",
+      "discount": 25,
+      "vehicle": "CREMA FPS 60 CON FILTRO UVA27 Y UVB",
+      "activeIngredient": "Ectoína + D.Titanio + Hamamelis + A.Vera + M.Karite + C.Levadura",
+      "productFunction": "SUPER HIDRATANTE Y DESCONGESTIVO",
+      "price": [
+        {"quantity": "60gr", "amount": 19698.2},
+      ]
+    },
+    {
+      "category": "HIDRATACIÓN",
+      "quantity": ["30gr"],
+      "name": "STEM GRAPE",
+      "discount": 25,
+      "vehicle": "GEL CREMA ANTIOXIDANTE POTENCIADO",
+      "activeIngredient": "Resveratrol 2% + Vitamina E 1% + Vitamina C 1%",
+      "productFunction": "ANTIOXIDANTE",
+      "price": [
+        {"quantity": "60gr", "amount": 28940 }
+      ]
+    },
+    {
+      "category": "FOTOPROTECCIÓN",
+      "quantity": ["60gr"],
       "name": "BY BLOCK",
       "discount": 25,
       "vehicle": "CREMA FPS 60 CON FILTRO UVA27 Y UVB",

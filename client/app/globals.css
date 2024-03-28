@@ -105,11 +105,24 @@ main{
   transition: all 500ms ease-in-out;
 }
 
-.section p {
+.ellipsisOneLine p {
+  width: 100%;
+
   white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.ellipsis {
+  display: block; /* Fallback for non-webkit */
+  display: -webkit-box;
+  max-width: 400px;
+  height: 26*1.4*3; /* Fallback for non-webkit */
+  line-height: 1.4;
+  -webkit-line-clamp:3;
+  -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  width: 100%;
 }
 
 input[type="checkbox"] {

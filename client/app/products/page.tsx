@@ -99,7 +99,7 @@ export default function Page() {
          {['HIGIENE', 'SERUMS', 'HIDRATACIÓN', 'TRATAMIENTOS', 'CORPORALES', 'FOTOPROTECCIÓN', 'CAPILARES', 'SUPLEMENTOS DIETARIOS'].map((x, y)=>{
            return(
            <div title={x} className={`cursor-pointer section  ${activeSection === x ? 'sectionActive' : 'sectionInactive' }`}>
-           <div  onClick={()=>activeSection === x ? setActiveSection('') : setActiveSection(x)}  className={`w-full bg-tango-500 border-solid border-b-2 rounded-[32px] mb-4 flex justify-between items-center`}>
+           <div  onClick={()=>activeSection === x ? setActiveSection('') : setActiveSection(x)}  className={`w-full bg-tango-500 border-solid border-b-2 rounded-[32px] mb-4 flex justify-between items-center ellipsisOneLine`}>
            <p className="subtitle text-white font-bold pl-4 py-2">{x}</p>
            <div className={`border-solid border-r-[2px] border-b-[2px] border-white w-4 h-4 mr-6 origin-center rotate ${activeSection === x ? 'rotateAnimation' : 'removeRotateAnimation' }`}>
            </div>

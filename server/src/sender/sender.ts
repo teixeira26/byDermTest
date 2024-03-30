@@ -126,7 +126,9 @@ const newHTML = (document.documentElement.outerHTML);
             from: "bonodigital@byderm.com.ar",
             to: email,
             subject: '¡Gracias por tu Confianza! Aquí tienes un Cupón de Descuento',
-            html: '<p>¡Hola! Queremos agradecerte por confiar en nuestros médicos y productos. Como muestra de nuestro agradecimiento, queremos ofrecerte un cupón de descuento del 25%. ¡Esperamos que lo disfrutes!</p>',
+            html: `<p>Hola, ¡Gracias por elegirnos! </p>
+            <p>Podés encontrar los puntos de venta By Derm a continuación</p>
+            <a href='https://byderm.com.ar/puntos-de-venta'>https://byderm.com.ar/puntos-de-venta</a>`,
             attachments:{
                 filename: 'bonodigital.pdf',
                 content: fs.createReadStream(path.join(__dirname, '../../archive.pdf'))

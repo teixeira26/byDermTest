@@ -96,6 +96,21 @@ export default function Page() {
         hydrated && productsFiltered 
         ? (
           <>
+          {/* <div className="flex gap-4 mb-8">
+          <div className="flex flex-col justify-center items-center">
+            <img src="cleanser100.webp" alt="" className="w-[96px] h-[96px] rounded-[16px] mb-4"/>
+            <p>Cleanser Aqua</p>
+          </div>
+          <div className="flex flex-col justify-center items-center">
+            <img src="cleanser100.webp" alt="" className="w-[96px] h-[96px] rounded-[16px] mb-4"/>
+            <p>Cleanser Aqua</p>
+          </div>
+          <div className="flex flex-col justify-center items-center">
+            <img src="cleanser100.webp" alt="" className="w-[96px] h-[96px] rounded-[16px] mb-4"/>
+            <p>Cleanser Aqua</p>
+          </div>
+          </div> */}
+          
          {['HIGIENE', 'SERUMS', 'HIDRATACIÓN', 'TRATAMIENTOS', 'CORPORALES', 'FOTOPROTECCIÓN', 'CAPILARES', 'SUPLEMENTOS DIETARIOS'].map((x, y)=>{
            return(
            <div title={x} className={`cursor-pointer section  ${activeSection === x ? 'sectionActive' : 'sectionInactive' }`}>
@@ -107,7 +122,10 @@ export default function Page() {
         
          
          <div className={`flex flex-col  ${activeSection === x ? 'mb-8 mt-[-52px] ' : '' }`}>
-         {productsFiltered.filter(x=>(x.category === activeSection && x.name !== 'CLEANSER SCRUB')).map((product, index) => (
+         {productsFiltered.filter(x=>(x.category === activeSection && x.name !== 'CLEANSER SCRUB')).sort((x: any, y: any)=>{
+  if(y.order>x.order)return -1
+  else return 1
+}).map((product, index) => (
               <div className={`${index === 0 ? 'mt-[48px]' : ''}`}>
                 <Card product={product} setProductsOnCart={setProductsOnCart} productsOnCart={productsOnCart} setModalState={setModalState} modalState={modalState}/>
 
@@ -122,7 +140,7 @@ export default function Page() {
            
             </>
         ) : (
-          <div className=" flex justify-center">
+          <div className="flex justify-center w-[100vw]">
             <div>
               <ContentLoader
                 speed={2}

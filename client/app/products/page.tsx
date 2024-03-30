@@ -69,9 +69,9 @@ export default function Page() {
         </div>
       )}
 
-      <nav className="flex items-center justify-between fixed z-40 w-[100%] bg-white top-0 left-0 pt-8 pb-8">
+      <nav className="flex items-center justify-between fixed z-40 w-[100vw] bg-white top-0 left-0 pt-8 pb-8 px-8">
         <Image
-          className="mr-4 ml-8"
+          className="mr-4 "
           alt="logo byDerm"
           width={124}
           height={60}
@@ -80,7 +80,7 @@ export default function Page() {
       
         <div>
           <Link href="/coupon">
-            <p className="text-[20px] md:text-[24px] text-white bg-tango-500 px-6 rounded-[4px] py-2 flex flex-wrap mr-8 md:mr-6 text-center">Emitir Receta</p>
+            <p className="text-[20px] md:text-[24px] text-white bg-tango-500 px-6 rounded-[4px] py-2 flex flex-wrap  md:mr-6 text-center">Emitir Receta</p>
           </Link>
           {productsOnCart > 0 && (
             <div className="absolute bg-white right-[26px] md:right-[20px] z-50 top-[28px] w-4 h-4 border-2 border-tango-500 rounded-[50%] flex justify-center items-center">

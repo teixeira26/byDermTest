@@ -103,7 +103,7 @@ export default function Card({
         key={product.imagePath}
         className="mt-4 w-full flex gap-4  h-fit"
       >
-        <div className="relative  h-fit ">
+        <div className="relative w-[100%] h-fit ">
           <img
             className="rounded-[16px] object-cover h-[20vh]  w-[18vh] md:h-[20vh] md:w-[20vh] cursor-pointer"
             alt={product.name}
@@ -111,16 +111,16 @@ export default function Card({
           />
         </div>
 
-        <div className="max-w-[150px] sm:max-w-[150px] md:max-w-96">
+        <div className="min-w-[130px] sm:min-w-[130px] md:min-w-96">
           <p
             title={product.vehicle}
-            className="text-[16px] w-[calc(100%-32px)]"
+            className="text-[16px] w-[100%]"
           >
             {product.vehicle}
           </p>
           <p
             title={product.activeIngredient}
-            className="ellipsis text-small mt-2 w-[calc(100%-32px)] text-[#888888]"
+            className="ellipsis text-small mt-2 w-[100%] text-[#888888]"
           >
             {product.activeIngredient}
           </p>
@@ -188,10 +188,10 @@ export default function Card({
                         className="w-6 h-6 rounded-[50%]"
                       />
                       <label
-                        className="w-[60px] elipse text-center"
+                        className="w-[60px] elipse text-center min-w-[150px]"
                         htmlFor="radio "
                       >
-                        {x}
+                        {x === '30CÁPSULAS'? '30 cp.' : x === '60CÁPSULAS'? '60 cp.' : x}
                       </label>
                     </div>
                   );

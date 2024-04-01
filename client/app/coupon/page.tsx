@@ -149,9 +149,9 @@ export default function Home() {
           src={"/logo.png"}
         />
         <p className="block text-black title-biggest text-center">
-          Generar Receta
+          GENERAR RECETA
         </p>
-        <div className="bg-tango-500 mt-8 py-4 w-full">
+        <div className="bg-tango-500 mt-8 py-4 w-full font-bold">
           <p className="text-white text-center subtitle-biggest">
             <span
               style={{ fontSize: "48px" }}
@@ -159,7 +159,7 @@ export default function Home() {
             >
               25%
             </span>
-            de descuento
+            DE DESCUENTO
           </p>
         </div>
         <div className="w-full flex flex-col items-left mt-8">

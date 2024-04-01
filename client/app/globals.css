@@ -100,10 +100,7 @@ main{
 }
 
 
-.section{
-  overflow: hidden;
-  transition: all 500ms ease-in-out;
-}
+
 
 .ellipsisOneLine p {
   width: 100%;
@@ -150,14 +147,16 @@ input[type="checkbox"]:checked {
   width: 100%;
 }
 
-.sectionInactive{
-  max-height: 70px;
-
+.section {
+  overflow: hidden;
+  max-height: 9999px; /* Definir la misma altura máxima que en .sectionActive */
+  transition: all 500ms linear;
 }
 
+.sectionInactive {
+  max-height: 70px; /* Definir la misma altura máxima que en .sectionActive */
+}
 
-.sectionActive{
+.sectionActive {
   max-height: 9999px;
-
 }
-

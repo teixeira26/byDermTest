@@ -23,7 +23,6 @@ export class FirebaseRecipeRepository {
             purchaseProvince: RecipeValue.purchaseProvince,
             dateOfPurchase: RecipeValue.dateOfPurchase
           };
-          console.log(recipeData, RecipeValue)
           const recipesCollection = collection(db, 'recipes');
           const docRef = await addDoc(recipesCollection, recipeData);
           return docRef.id;

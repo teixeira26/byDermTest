@@ -17,7 +17,8 @@ export default function Page() {
   const [searchValue, setSearchValue] = useState("");
   const [productsFiltered, setProductsFiltered] = useState<product[] | false>(false);
   const [modalState, setModalState] = useState<boolean>(false);
-  const [activeSection, setActiveSection] = useState('')
+  const [activeSection, setActiveSection] = useState('');
+  const [activeSectionHeight, setActiveSectionHeight] = useState('70px');
   const router = useRouter()
 
   const getProductsFunction = async()=>{
@@ -31,6 +32,24 @@ export default function Page() {
     setProductsOnCart(cartItems.length);
     setHydrated(true);
   }, []);
+
+  useEffect(()=>{
+
+   if(productsFiltered) {
+    const actualProducts = productsFiltered.filter(x=>(x.category === activeSection && x.name !== 'CLEANSER SCRUB'))
+    console.log('actualProd', actualProducts)
+    if(actualProducts.length > 0){
+      const actualProductsHeight = document.getElementsByClassName(`${activeSection}Active`)[0] as unknown as any
+      setActiveSectionHeight(`${actualProductsHeight.offsetHeight + 32}px`);
+      console.log(activeSection)
+      console.log(`${actualProductsHeight.offsetHeight}px`)
+    }
+    else{
+      setActiveSectionHeight('70px')
+    }
+    
+  }
+  }, [activeSection])
 
   const modalToggle = () => {
     setModalState(!modalState);
@@ -113,9 +132,21 @@ export default function Page() {
           
          {['HIGIENE', 'SERUMS', 'HIDRATACIÓN', 'TRATAMIENTOS', 'CORPORALES', 'FOTOPROTECCIÓN', 'CAPILARES', 'SUPLEMENTOS DIETARIOS'].map((x, y)=>{
            return(
-           <div title={x} className={`cursor-pointer section ${x} ${activeSection === x ? 'sectionActive' : 'sectionInactive' }`}>
+           <div title={x} style={{height: activeSectionHeight !== '70px' ? activeSection === x ? `${activeSectionHeight}` : '70px' : '70px' }} className={`cursor-pointer section ${x}`}>
            <div  onClick={()=>{
-            activeSection === x ? setActiveSection('') : setActiveSection(x)
+            if( activeSection === x ){
+              setActiveSection('')
+            }
+            else{
+              if( activeSection.length > 0 ){
+                setActiveSection('')
+                setTimeout(()=>setActiveSection(x), 700) 
+              }
+              else{
+                setActiveSection(x)
+
+              } 
+            }      
             }}  className={`w-full bg-tango-500 border-solid border-b-2 rounded-[32px] mb-4 flex justify-between items-center ellipsisOneLine`}>
            <p className="subtitle text-white font-bold pl-4 py-2">{x}</p>
            <div className={`border-solid border-r-[2px] border-b-[2px] border-white w-4 h-4 mr-6 origin-center rotate ${activeSection === x ? 'rotateAnimation' : 'removeRotateAnimation' }`}>
@@ -123,8 +154,20 @@ export default function Page() {
          </div>
         
          
-         <div className={`flex flex-col  ${activeSection === x ? 'mb-8 mt-[-52px] ' : '' }`}>
-         {productsFiltered.filter(x=>(x.category === activeSection && x.name !== 'CLEANSER SCRUB')).sort((x: any, y: any)=>{
+         <div className={`flex flex-col  ${activeSection === x ? `mb-8 mt-[-52px] ${x}Active` : '' }`}>
+         {
+         activeSection === '' ?
+         productsFiltered.filter(y=>(y.category === x && y.name !== 'CLEANSER SCRUB')).sort((x: any, y: any)=>{
+  if(y.order>x.order)return -1
+  else return 1
+}).map((product, index) => (
+              <div className={`${index === 0 ? 'mt-[-4px]' : ''}`}>
+                <Card product={product} setProductsOnCart={setProductsOnCart} productsOnCart={productsOnCart} setModalState={setModalState} modalState={modalState}/>
+
+              </div>
+
+           )):
+            productsFiltered.filter(y=>(y.category === x && y.name !== 'CLEANSER SCRUB')).sort((x: any, y: any)=>{
   if(y.order>x.order)return -1
   else return 1
 }).map((product, index) => (
@@ -133,7 +176,8 @@ export default function Page() {
 
               </div>
 
-           ))}
+           ))
+           }
            </div>
            
            </div>)

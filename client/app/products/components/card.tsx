@@ -103,9 +103,9 @@ export default function Card({
         key={product.imagePath}
         className="mt-4 w-full flex gap-4  h-fit"
       >
-        <div className="relative w-[100%] h-fit ">
+        <div className="relative w-fit h-fit ">
           <img
-            className="rounded-[16px] object-cover h-[20vh]  w-[18vh] md:h-[20vh] md:w-[20vh] cursor-pointer"
+            className="rounded-[16px] object-cover h-[20vh] min-w-[18vh] w-[18vh] md:h-[20vh] md:w-[20vh] cursor-pointer"
             alt={product.name}
             src={`/${product.imageUrl}`}
           />
@@ -130,7 +130,7 @@ export default function Card({
         <div className="my-4">
           <div className="flex justify-between my-2 mb-4 items-center">
             <div>
-              <p className="text-small mb-4">
+              <p className="text-small mb-4 flex flex-wrap">
                 <span className="line-through mr-2">
                   {product.price &&
                     formatCurrency(product.price[0].amount.toFixed(2))}

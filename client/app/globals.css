@@ -116,7 +116,7 @@ main{
   max-width: 400px;
   height: 26*1.4*3; /* Fallback for non-webkit */
   line-height: 1.4;
-  -webkit-line-clamp:3;
+  -webkit-line-clamp:4;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -149,14 +149,7 @@ input[type="checkbox"]:checked {
 
 .section {
   overflow: hidden;
-  max-height: 9999px; /* Definir la misma altura máxima que en .sectionActive */
   transition: all 500ms linear;
 }
 
-.sectionInactive {
-  max-height: 70px; /* Definir la misma altura máxima que en .sectionActive */
-}
 
-.sectionActive {
-  max-height: 9999px;
-}

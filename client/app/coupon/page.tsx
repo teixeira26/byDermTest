@@ -9,6 +9,7 @@ import countUniqueOccurrences from "./services/countUniqueOcurrences";
 import sendEmail from "./services/sendEmail";
 import createRecipe from "./services/createRecipe";
 import sendWhatsapp from "./services/sendWhats";
+import updateDoctors from "./services/updateDoctors";
 
 function getCartItems() {
   return JSON.parse(localStorage.getItem("cart") || "[]") as never[];
@@ -75,6 +76,12 @@ export default function Home() {
             };
           }) as any
         );
+        updateDoctors(doctor.name, doctor.lastName, doctor.license, cartItems.map((x: any) => {
+          return {
+            name: x.name,
+            quantity: x.quantity as any,
+          };
+        }) as any, doctor.id)
         clearCart();
         router.push("/thanks");
         sendMessage(false);}
@@ -119,6 +126,12 @@ export default function Home() {
           };
         }) as any
         );
+        updateDoctors(doctor.name, doctor.lastName, doctor.license, cartItems.map((x: any) => {
+          return {
+            name: x.name,
+            quantity: x.quantity as any,
+          };
+        }) as any, doctor.id)
         clearCart();
         router.push("/thanks");
         sendWhatsApp(false);}

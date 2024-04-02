@@ -1,5 +1,5 @@
 
-import { collection, addDoc, getDocs, doc, deleteDoc, updateDoc } from 'firebase/firestore';
+import { collection, addDoc, getDocs, doc, deleteDoc, updateDoc, getDoc } from 'firebase/firestore';
 
 import { db } from '../../../firebase/firebase.config';
 import { DoctorEntity } from '../../domain/doctor.entity';
@@ -62,13 +62,37 @@ export class FirebaseDoctorRepository {
 //Update
 async updateDoctor(doctorId: string, DoctorValue: DoctorValue): Promise<boolean | null> {
   try {
+
+    const doctorsCollection = collection(db, 'doctors');
+    const doctorDoc = doc(doctorsCollection, doctorId);
+    const doctorSnapshot = await getDoc(doctorDoc);
+    
+    const doctorRecipes = doctorSnapshot.data()?.quantityOfRecipes;
+    let quantityOfRecipes = doctorRecipes;
+
+    DoctorValue.quantityOfRecipes.forEach((recipe: any) => {
+      const indiceCoincidencia = doctorRecipes.findIndex((item: any) => item.name === recipe.name && item.quantity === recipe.quantity);
+      
+      console.log(doctorRecipes)
+      if (indiceCoincidencia !== -1) {
+        doctorRecipes[indiceCoincidencia].count++;
+      } else {
+          doctorRecipes.push({count: 1, name: recipe.name, quantity: recipe.quantity});
+      }
+  });
+
+  console.log( doctorRecipes);
+
+
+
     const doctorDocRef = doc(db, 'doctors', doctorId);
     const doctorData = {
       name: DoctorValue.name,
       license: DoctorValue.license,
       lastName: DoctorValue.lastName,
-      quantityOfRecipes: DoctorValue.quantityOfRecipes
+      quantityOfRecipes: doctorRecipes
     };
+    console.log(doctorData)
 
     await updateDoc(doctorDocRef, doctorData);
     return true;

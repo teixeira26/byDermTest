@@ -9,9 +9,9 @@ export class DoctorUseCase {
     constructor(private readonly doctorRepository: DoctorRepository) {}
 
     //Register
-    public async registrarDoctor({ name, license, lastName }: { name: string; license: number; lastName: string }) {
+    public async registrarDoctor({ name, license, lastName, quantityOfRecipes }: { name: string; license: number; lastName: string, quantityOfRecipes: [] }) {
         //Creo la instancia useValue con los parametros que ingresan
-        const useValue = new DoctorValue({ name, license, lastName });
+        const useValue = new DoctorValue({ name, license, lastName, quantityOfRecipes });
         
         //Registro al Doctor utilizando doctorRepository
         const doctorCreated = await this.doctorRepository.registerDoctor(useValue)
@@ -39,13 +39,14 @@ export class DoctorUseCase {
     //UPDATE
     public async actualizarDoctor(
         doctorId: string,
-        { name, license, lastName }: { name: string; license: number; lastName: string }
+        { name, license, lastName, quantityOfRecipes }: { name: string; license: number; lastName: string, quantityOfRecipes:[] }
       ): Promise<boolean | null> {
         try {
           const updated = await this.doctorRepository.updateDoctor(doctorId, {
             name,
             license,
-            lastName
+            lastName,
+            quantityOfRecipes
           });
           return updated !== null ? true : false;
         } catch (error) {

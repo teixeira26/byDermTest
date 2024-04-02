@@ -27,7 +27,6 @@ export default function Home() {
       const actualDate = new Date().toISOString().split("T")[0];
       const changed = JSON.parse(localStorage.getItem("dateChanged") || "false");
   
-      console.log(previousDate, actualDate)
   
       setDoctorData(doctor);
   

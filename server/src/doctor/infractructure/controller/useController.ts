@@ -15,7 +15,7 @@ export class doctorController {
         const {name, license, lastName} = req.body;
 
         try {
-            const doctorCreated = await this.doctorUseCase.registrarDoctor({name, license, lastName})
+            const doctorCreated = await this.doctorUseCase.registrarDoctor({name, license, lastName, quantityOfRecipes:[]})
             res.status(201).json(doctorCreated);
         } catch (error) {
             console.log(error);
@@ -54,13 +54,14 @@ export class doctorController {
     //Update
     async updateDoctor(req: Request, res: Response) {
         const doctorId = req.params.id;
-        const { name, license, lastName } = req.body;
+        const { name, license, lastName, quantityOfRecipes } = req.body;
     
         try {
           const updated = await this.doctorUseCase.actualizarDoctor(doctorId, {
             name,
             license,
-            lastName
+            lastName,
+            quantityOfRecipes,
           });
     
           if (updated) {

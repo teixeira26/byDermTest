@@ -15,6 +15,7 @@ export class FirebaseDoctorRepository {
             name: DoctorValue.name,
             license: DoctorValue.license,
             lastName: DoctorValue.lastName,
+            quantityOfRecipes: []
           };
     
           const doctorsCollection = collection(db, 'doctors');
@@ -66,6 +67,7 @@ async updateDoctor(doctorId: string, DoctorValue: DoctorValue): Promise<boolean 
       name: DoctorValue.name,
       license: DoctorValue.license,
       lastName: DoctorValue.lastName,
+      quantityOfRecipes: DoctorValue.quantityOfRecipes
     };
 
     await updateDoc(doctorDocRef, doctorData);

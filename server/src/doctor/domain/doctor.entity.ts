@@ -4,4 +4,5 @@ export interface DoctorEntity{
     name: string,
     license: number,
     lastName: string,
+    quantityOfRecipes: [],
 }

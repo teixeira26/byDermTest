@@ -106,7 +106,6 @@ products.forEach((x: any)=>{
       x = x;
       break;
   }
-  console.log(x)
   document.getElementsByClassName(x.id)[0].getElementsByClassName(x.quantity)[0].classList.add("checked");
 
 })

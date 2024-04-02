@@ -37,12 +37,9 @@ export default function Page() {
 
    if(productsFiltered) {
     const actualProducts = productsFiltered.filter(x=>(x.category === activeSection && x.name !== 'CLEANSER SCRUB'))
-    console.log('actualProd', actualProducts)
     if(actualProducts.length > 0){
       const actualProductsHeight = document.getElementsByClassName(`${activeSection}Active`)[0] as unknown as any
       setActiveSectionHeight(`${actualProductsHeight.offsetHeight + 32}px`);
-      console.log(activeSection)
-      console.log(`${actualProductsHeight.offsetHeight}px`)
     }
     else{
       setActiveSectionHeight('70px')

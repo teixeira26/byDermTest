@@ -9,6 +9,8 @@ import { useRouter } from "next/navigation";
 import getProducts from "./services/getProducts";
 import Card from "./components/card";
 import { product } from "./models/product";
+import getDoctorByLicense from "../services/getDoctorBylicense";
+import CardUpside from "./components/cardUpside";
 
 
 export default function Page() {
@@ -19,11 +21,42 @@ export default function Page() {
   const [modalState, setModalState] = useState<boolean>(false);
   const [activeSection, setActiveSection] = useState('');
   const [activeSectionHeight, setActiveSectionHeight] = useState('70px');
+  const [mostRecipedItems, setMostRecipedItems] = useState([]);
+  
+
   const router = useRouter()
 
   const getProductsFunction = async()=>{
     const products =  await getProducts();
     setProductsFiltered(products)
+
+    const changed = JSON.parse(localStorage.getItem("changed") || "false");
+      const doctor = await getDoctorByLicense(changed.license);
+      if(doctor.quantityOfRecipes.length > 2){
+        const mostRecipedItemss = doctor.quantityOfRecipes.map((recipe:any)=>{
+          return products.find((x: any)=>{
+            if((x.name === recipe.name) && (x.quantity[0] === recipe.quantity))return x
+          })
+        })
+        setMostRecipedItems(mostRecipedItemss)
+      }
+      else if(doctor.quantityOfRecipes.length > 0){
+        const mostRecipedItemss = doctor.quantityOfRecipes.map((recipe:any)=>{
+          return products.find((x: any)=>{
+            if((x.name === recipe.name) && (x.quantity[0] === recipe.quantity))return x
+          })
+        })
+        const differentProducts = doctor.quantityOfRecipes.map((recipe:any)=>{
+          return products.find((x: any)=>{
+            if((x.name !== recipe.name))return x
+          })
+        })
+        setMostRecipedItems([...mostRecipedItemss, differentProducts[0], differentProducts[1] ? differentProducts[1] : products[7]].slice(0,3) as unknown as any)
+      }
+      else if(doctor.quantityOfRecipes.length === 0){
+       
+        setMostRecipedItems([products[0], products[1], products[2]] as unknown as any)
+      }
   }
 
   useEffect(() => {
@@ -47,6 +80,7 @@ export default function Page() {
     
   }
   }, [activeSection])
+
 
   const modalToggle = () => {
     setModalState(!modalState);
@@ -109,23 +143,23 @@ export default function Page() {
       </nav>
       <div className="grid  min-w-[calc(100vw-64px)]  w-[calc(100vw-64px)]  mt-[96px] md:mt-[124px]">
         {
-        hydrated && productsFiltered 
+        hydrated && productsFiltered && mostRecipedItems
         ? (
           <>
-          {/* <div className="flex gap-4 mb-8">
-          <div className="flex flex-col justify-center items-center">
-            <img src="cleanser100.webp" alt="" className="w-[96px] h-[96px] rounded-[16px] mb-4"/>
-            <p>Cleanser Aqua</p>
-          </div>
-          <div className="flex flex-col justify-center items-center">
-            <img src="cleanser100.webp" alt="" className="w-[96px] h-[96px] rounded-[16px] mb-4"/>
-            <p>Cleanser Aqua</p>
-          </div>
-          <div className="flex flex-col justify-center items-center">
-            <img src="cleanser100.webp" alt="" className="w-[96px] h-[96px] rounded-[16px] mb-4"/>
-            <p>Cleanser Aqua</p>
-          </div>
-          </div> */}
+          <p className="title mb-4">MÁS RECETADOS</p>
+          <div className="grid grid-cols-3 gap-6 mb-4">
+          {  
+          mostRecipedItems.map((x:any)=>{
+return (
+  <CardUpside  product={x} setProductsOnCart={setProductsOnCart} productsOnCart={productsOnCart} setModalState={setModalState} modalState={modalState}></CardUpside>
+ 
+)
+          })
+          }
+        
+          </div> 
+          <div className="w-full border border-solid border-gray-300 mb-4"></div>
+
           
          {['HIGIENE', 'SERUMS', 'HIDRATACIÓN', 'TRATAMIENTOS', 'CORPORALES', 'FOTOPROTECCIÓN', 'CAPILARES', 'SUPLEMENTOS DIETARIOS'].map((x, y)=>{
            return(

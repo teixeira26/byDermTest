@@ -1,5 +1,4 @@
 'use client'
-import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { useEffect, useState } from "react";
@@ -7,6 +6,7 @@ import { square } from "ldrs";
 import { useRouter, usePathname } from "next/navigation";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
+
 
 export default function RootLayout({
   children,

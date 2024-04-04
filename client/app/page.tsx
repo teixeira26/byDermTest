@@ -246,7 +246,7 @@ export default function Home() {
           </main>
 
          
-          <img style={{position: 'absolute', width: '50vw', height: '100vh', left:'0', objectFit: 'cover'}} src="portada.jpg" alt="hidden md:flex " />
+          <img style={{position: 'absolute', width: '50vw', height: '100vh', left:'0', objectFit: 'cover'}} src="portada.jpg" className="hidden md:flex " />
 
  
           <div className="hidden md:flex absolute bg-white w-[50vw] z-10 h-[100vh] right-0 top-0"></div>

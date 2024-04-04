@@ -4,6 +4,7 @@ import "./globals.css";
 import { useEffect, useState } from "react";
 import { square } from "ldrs";
 import { useRouter, usePathname } from "next/navigation";
+import Head from "next/head";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 

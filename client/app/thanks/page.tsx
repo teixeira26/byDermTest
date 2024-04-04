@@ -33,18 +33,23 @@ export default function page({}: Props) {
                  
  Enviaste tu receta con <span className="text-tango-500">
                 éxito 
-                    </span>&nbsp;. Si tenes dudas o consulta comunicate con el laboratorio.
+                    </span>
             </p>
-            <a href={`/products`} className="px-2 mt-4 rounded-[16px] py-[12px] bg-tango-500 text-white">
+            <a href={`/products`} className="px-[24px] mt-4 rounded-[16px] py-[12px] bg-tango-500 text-white">
             Seguir recetando
             </a >
 
-            
+           
         </div>
+     
       </div>}
-      <a href={`https://wa.me/+5491126311142/?text=Hola`} className="w-[64px] h-[64px] fixed right-[32px] bottom-[48px]">
-              <img src="whats.png" alt="" className="w-full h-full shake"/>
+      
+      <div className="flex items-center flex-col mt-[64px] fixed w-[100vw] bottom-[64px]">
+      <p>Por consultas profesionales</p>
+      <a href={`https://wa.me/+5491126311142/?text=Hola`} className="mt-2">
+              <img src="whats.png" alt="" className="w-[48px] h-[48px]  shake"/>
             </a>
+      </div>  
     </div>
   );
 }

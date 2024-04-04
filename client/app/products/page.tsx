@@ -33,7 +33,10 @@ export default function Page() {
     const changed = JSON.parse(localStorage.getItem("changed") || "false");
       const doctor = await getDoctorByLicense(changed.license);
       if(doctor.quantityOfRecipes.length > 2){
-        const mostRecipedItemss = doctor.quantityOfRecipes.map((recipe:any)=>{
+        const mostRecipedItemss = doctor.quantityOfRecipes.sort((x: any, y: any)=>{
+          if(y.count>x.count)return 1
+          else return -1
+        }).slice(0,3).map((recipe:any)=>{
           return products.find((x: any)=>{
             if((x.name === recipe.name) && (x.quantity[0] === recipe.quantity))return x
           })
@@ -227,14 +230,17 @@ return (
                 backgroundColor="#f3f3f3"
                 foregroundColor="#ecebeb"
               >
-                <rect x="8" y="420" rx="16" ry="32" width="300" height="40" />
-                <rect x="8" y="492" rx="16" ry="64" width="300" height="40" />
-                <rect x="8" y="564" rx="16" ry="64" width="300" height="40" />
-                <rect x="8" y="636" rx="16" ry="64" width="300" height="40" />
-                <rect x="8" y="708" rx="16" ry="64" width="300" height="40" />
-                <rect x="8" y="780" rx="16" ry="64" width="300" height="40" />
-                <rect x="8" y="852" rx="16" ry="64" width="300" height="40" />
-                <rect x="8" y="924" rx="16" ry="64" width="300" height="40" />
+                <rect x="8" y="420" rx="8" ry="8" width="84" height="84" />
+                <rect x="116" y="420" rx="8" ry="8" width="84" height="84" />
+                <rect x="224" y="420" rx="8" ry="8" width="84" height="84" />
+                
+                <rect x="8" y="528" rx="16" ry="32" width="300" height="40" />
+                <rect x="8" y="600" rx="16" ry="64" width="300" height="40" />
+                <rect x="8" y="672" rx="16" ry="64" width="300" height="40" />
+                <rect x="8" y="744" rx="16" ry="64" width="300" height="40" />
+                <rect x="8" y="816" rx="16" ry="64" width="300" height="40" />
+                <rect x="8" y="888" rx="16" ry="64" width="300" height="40" />
+                <rect x="8" y="960" rx="16" ry="64" width="300" height="40" />
 
 
               </ContentLoader>

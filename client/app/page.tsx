@@ -178,7 +178,8 @@ export default function Home() {
       )}
       {hydrated ? (
         <div>
-          <main className="flex flex-col items-center fadein md:hidden">
+          <main className="flex flex-col items-center fadein md:hidden h-[100dvh] justify-center mt-[-32px]">
+            <img src="logo.png" className="w-[160px] mb-8" alt="" />
             <p className="block text-black title-biggest text-center">
               Bienvenido a nuestro sistema de
               <span className="text-tango-500">&nbsp; descuentos</span>
@@ -241,20 +242,16 @@ export default function Home() {
                 </div>
               </fieldset>
             </form>
-            <div className="relative w-full mt-8 aspect-w-16 aspect-h-9">
-              <img alt="scientist" src={"/scientist.png"}></img>
-            </div>
+           
           </main>
 
-          <div className="hidden md:flex absolute bg-nevada-500 w-[50vw] h-[100vh] left-0 top-0"></div>
+         
+          <img style={{position: 'absolute', width: '50vw', height: '100vh', left:'0', objectFit: 'cover'}} src="portada.jpg" alt="hidden md:flex " />
+
+ 
           <div className="hidden md:flex absolute bg-white w-[50vw] z-10 h-[100vh] right-0 top-0"></div>
 
-          <div className="hidden md:flex min-h-[calc(100vh)] absolute overflow-hidden left-0 items-end transform translate-x-[-92px]">
-            <div className="relative mt-8 w-[800px] transform -scale-x-100 md:translate-x-[-64px] lg:translate-x-[0]">
-              <img alt="scientist" src="/scientist.png"></img>
-            </div>
-          </div>
-
+    
           <div className="hidden md:flex absolute right-0 top-0 w-[50vw] h-[100vh] justify-center items-center z-10">
             <main className="flex-col items-center fadein hidden md:flex m-8">
               <p className="block text-black title-biggest text-center">

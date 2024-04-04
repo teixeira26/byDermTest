@@ -48,6 +48,21 @@ export default function CardUpside({
     }
   }, [product]);
 
+  useEffect(() => {
+    const cartItems = JSON.parse(localStorage.getItem("cart") || "[]");
+    const selectedItem = cartItems.find((item: any) => {
+      return (item.name === product.name && item.quantity == product.quantity[0]) ;
+    });
+
+    if (selectedItem) {
+      setQuantitySelected(selectedItem.quantity);
+    }
+    else{
+      setQuantitySelected('')
+    }
+  }, [productsOnCart])
+  
+
   const modalToggle = () => {
     setModalState(!modalState);
     const body = document.getElementsByTagName("body")[0];
@@ -94,11 +109,22 @@ export default function CardUpside({
   };
 
   return (
-       <div className="flex flex-col justify-start p-[1px] " onClick={()=>changeCart(product, product.quantity[0])}>
-            <img src={product.imageUrl} alt="" className="w-[100%] rounded-[16px] mb-4"/>
-            <p className="font-bold text-[16px]">{product.name} </p>
+    <>
+       {product ?<div className="flex flex-col justify-start p-[1px] " onClick={()=>changeCart(product, product.quantity[0])}>
+              {quantitySelected == product.quantity[0] ? 
+              <div className="flex justify-end">
+              <img src="check.png" alt='iconChecked' className="w-6 h-6 absolute translate-x-[8px] translate-y-[-8px]" />
+
+              </div>
+              :<></>}
+            <img src={product.imageUrl} alt="" className="w-[100%] aspect-square rounded-[16px] mb-4"/>
+            <p className={`font-bold text-[16px] ${quantitySelected == product.quantity[0] ? 'text-tango-500' : ''}`}>{product.name} </p>
             <p className="font-normal text-[12px]">{product.quantity[0]}</p>
           </div>
-
+        :
+        <h2>skaoksa</h2>
+        
+        }
+</>
   );
 }

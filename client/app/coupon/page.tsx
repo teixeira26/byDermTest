@@ -251,13 +251,12 @@ export default function Home() {
         </div>
       </main>
 
-      <div className="hidden md:flex w-[50vw] absolute h-[100vh] left-0 bg-nevada-300 transform translate-y-[-32px]"></div>
+      <img alt="regalos" src={"/gifts.png"} className="hidden md:flex w-[49vw] fixed z-100 left-0 bottom-[64px]"></img>
       <div className="hidden md:flex w-[50vw] absolute h-[100vh] bg-white right-0 z-10 transform  translate-y-[-32px]"></div>
 
       <main className="hidden md:flex bg-nevada-300  min-h-[calc(100vh-64px)] z-30 ">
         <div className="min-h-[calc(100vh-64px)] absolute overflow-hidden flex items-end transform translate-x-[-92px]">
-          <div className="relative mt-8 w-[800px] transform -scale-x-100">
-            <img alt="regalos" src={"/gifts.png"} className="w-full"></img>
+          <div className="absolute mt-8 w-[100vw] h-[100vh] transform -scale-x-100  z-100">
           </div>
         </div>
         <div className="w-[50vw] bg-nevada-00"></div>

@@ -48,6 +48,20 @@ export default function Card({
     }
   }, [product]);
 
+  useEffect(() => {
+    const cartItems = JSON.parse(localStorage.getItem("cart") || "[]");
+    const selectedItem = cartItems.find((item: any) => {
+      return (item.name === product.name && item.quantity == product.quantity[0]);
+    });
+
+    if (selectedItem) {
+      setQuantitySelected(selectedItem.quantity);
+    }
+    else{
+      setQuantitySelected('')
+    }
+  }, [productsOnCart])
+
   const modalToggle = () => {
     setModalState(!modalState);
     const body = document.getElementsByTagName("body")[0];

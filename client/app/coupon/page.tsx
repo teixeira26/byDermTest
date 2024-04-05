@@ -213,18 +213,27 @@ export default function Home() {
             placeholder="1165693056"
             className="border-2 p-4 rounded-full border-black block w-full"
             onChange={(e) => setWhatsAppNumber(e.target.value)}
-
+            disabled = {email.length > 0}
           />
-          <a
-            onClick={async () => {
-              sendWhatsApp(true);
-              
-            }}
-            className="absolute p-[14px] bg-tango-500 hover:bg-tango-600 active:bg-tango-700 rounded-full mr-1"
-          >
-            <FaRegPaperPlane color="white" size={"24px"} />
-          </a>
+         
         </div>
+        <button
+              onClick={async () => {
+                if(email.length > 0 )sendMessage(true);
+                if(whatsAppNumber.length > 0 )sendWhatsApp(true)
+                else{
+                  Swal.fire({
+                    icon: "info",
+                    title: "Oops...",
+                    text: "Debes ingresar un número de WhatsApp o un Mail antes de enviar una receta!",
+                  });
+              }
+              }}
+              className="fixed bottom-[32px] right-[32px] px-6 py-4 text-white bg-nevada-500 rounded-[50%] flex flex-col  border-solid border-[4px] border-white justify-center items-center"
+            >
+              <FaRegPaperPlane color="white" size={"32px"} />
+              Enviar
+            </button>
       </div> 
         <div className="flex flex-col gap-4 w-full">
           <label className="text-[24px] mt-8 font-medium w-full" htmlFor="name">
@@ -237,21 +246,14 @@ export default function Home() {
               placeholder="exemplo@gmail.com"
               className="border-2 p-4 rounded-full border-black block w-full"
               onChange={(e) => setEmail(e.target.value)}
+              disabled = {whatsAppNumber.length > 0}
             />
-            <button
-              onClick={async () => {
-                sendMessage(true);
-                
-              }}
-              className="absolute p-[14px] bg-tango-500 hover:bg-tango-600 active:bg-tango-700 rounded-full mr-1"
-            >
-              <FaRegPaperPlane color="white" size={"24px"} />
-            </button>
+           
           </div>
         </div>
       </main>
 
-      <img alt="regalos" src={"/gifts.png"} className="hidden md:flex w-[49vw] fixed z-100 left-0 bottom-[64px]"></img>
+      <img alt="regalos" src={"/gifts.png"} className="hidden md:flex w-[49vw] fixed z-[199] left-0 bottom-[64px]"></img>
       <div className="hidden md:flex w-[50vw] absolute h-[100vh] bg-white right-0 z-10 transform  translate-y-[-32px]"></div>
 
       <main className="hidden md:flex bg-nevada-300  min-h-[calc(100vh-64px)] z-30 ">

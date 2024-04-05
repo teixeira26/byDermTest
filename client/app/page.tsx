@@ -179,24 +179,16 @@ export default function Home() {
       {hydrated ? (
         <div>
           <main className="flex flex-col items-center fadein md:hidden h-[100dvh] justify-center mt-[-32px]">
-            <img src="logo.png" className="w-[160px] mb-8" alt="" />
-            <p className="block text-black title-biggest text-center">
-              Bienvenido a nuestro sistema de
-              <span className="text-tango-500">&nbsp; descuentos</span>
-            </p>
+            <img src="portada.jpg" className="w-[100vw] h-[60vh] mb-8 object-cover " alt="" />
+          
             <form onSubmit={(e) => handleFormSubmit(e)}>
               <fieldset className="flex flex-col gap-4">
                 <div className="flex flex-col gap-4">
-                  <label
-                    className="subtitle-biggest mt-8 font-medium"
-                    htmlFor="tuitionNumber"
-                  >
-                    Ingresá tu número de Matrícula
-                  </label>
+                 
                   <div className="flex flex-col justify-center items-end">
                     <input
                       type="number"
-                      placeholder="1299232"
+                      placeholder="Ingresá tu numero de matrícula"
                       id="tuitionNumber"
                       className={`border-2 p-4 rounded-full ${
                         error ? "border-red-500" : "border-black"
@@ -221,7 +213,7 @@ export default function Home() {
 
                 <p>
                   {" "}
-                  ¿Es tu primera vez en la aplicación?{" "}
+                  ¿Primera vez?{" "}
                   <span
                     onClick={() => setSignUpLogin(true)}
                     className="text-tango-500 hover:underline cursor-pointer"
@@ -254,7 +246,7 @@ export default function Home() {
     
           <div className="hidden md:flex absolute right-0 top-0 w-[50vw] h-[100vh] justify-center items-center z-10">
             <main className="flex-col items-center fadein hidden md:flex m-8">
-              <p className="block text-black title-biggest text-center">
+              <p className="block text-[#545659] title-biggest text-center uppercase font-semibold">
                 Bienvenido a nuestro sistema de
                 <span className="text-tango-500">&nbsp; descuentos</span>
               </p>
@@ -262,7 +254,7 @@ export default function Home() {
                 <fieldset className="flex flex-col gap-4">
                   <div className="flex flex-col gap-4">
                     <label
-                      className="subtitle-biggest mt-8 font-medium"
+                      className="subtitle-biggest mt-8 text-[#545659] font-normal"
                       htmlFor="tuitionNumber"
                     >
                       Ingresá tu número de Matrícula
@@ -293,7 +285,7 @@ export default function Home() {
                       <></>
                     )}
                   </div>
-                  <p>
+                  <p className="text-[#545659] font-bold">
                   {" "}
                   ¿Es tu primera vez en la aplicación?{" "}
                   <span

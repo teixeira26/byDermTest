@@ -119,7 +119,7 @@ export default function Card({
       >
         <div className="relative w-fit h-fit ">
           <img
-            className="rounded-[16px] object-cover h-[20vh] min-w-[18vh] w-[18vh] md:h-[20vh] md:w-[20vh] cursor-pointer"
+            className="rounded-[16px] object-contain h-[20vh] min-w-[18vh] w-[18vh] md:h-[20vh] md:w-[20vh] cursor-pointer"
             alt={product.name}
             src={`/${product.imageUrl}`}
           />

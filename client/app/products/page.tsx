@@ -159,7 +159,7 @@ return (
            <div  onClick={()=>{
             if( activeSection === x ){
               setActiveSection('')
-            }
+            } 
             else{
               if( activeSection.length > 0 ){
                 setActiveSection('')

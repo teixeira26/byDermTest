@@ -134,7 +134,7 @@ export default function Card({
           </p>
           <p
             title={product.activeIngredient}
-            className="ellipsis text-small mt-2 w-[100%] text-[#888888]"
+            className="ellipsis text-small mt-2 w-[100%] text-[#888888] uppercase"
           >
             {product.activeIngredient}
           </p>

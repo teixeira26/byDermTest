@@ -147,6 +147,23 @@ export default function Home() {
 
   return (
     <>
+    <button
+              onClick={async () => {
+                if(email.length > 0 )sendMessage(true);
+                if(whatsAppNumber.length > 0 )sendWhatsApp(true)
+                else if(email.length > 0  && whatsAppNumber.length > 0 ){
+                  Swal.fire({
+                    icon: "info",
+                    title: "Oops...",
+                    text: "Debes ingresar un número de WhatsApp o un Mail antes de enviar una receta!",
+                  });
+              }
+              }}
+              className="fixed bottom-[32px] right-[32px] px-6 py-4 z-[100] text-white bg-nevada-500 rounded-[50%] flex flex-col  border-solid border-[4px] border-white justify-center items-center"
+            >
+              <FaRegPaperPlane color="white" size={"32px"} />
+              Enviar
+            </button>
       <main className="flex flex-col items-center overflow-hidden fadein md:hidden">
         <Link href={"/products"}>
           <FaArrowRight
@@ -211,29 +228,13 @@ export default function Home() {
             type="text"
             id="name"
             placeholder="1165693056"
-            className="border-2 p-4 rounded-full border-black block w-full"
+            className={`border-2 p-4 rounded-full border-black block w-full ${email.length > 0 ? 'bg-nevada-100' : 'bg-white'}`}
             onChange={(e) => setWhatsAppNumber(e.target.value)}
             disabled = {email.length > 0}
           />
          
         </div>
-        <button
-              onClick={async () => {
-                if(email.length > 0 )sendMessage(true);
-                if(whatsAppNumber.length > 0 )sendWhatsApp(true)
-                else{
-                  Swal.fire({
-                    icon: "info",
-                    title: "Oops...",
-                    text: "Debes ingresar un número de WhatsApp o un Mail antes de enviar una receta!",
-                  });
-              }
-              }}
-              className="fixed bottom-[32px] right-[32px] px-6 py-4 text-white bg-nevada-500 rounded-[50%] flex flex-col  border-solid border-[4px] border-white justify-center items-center"
-            >
-              <FaRegPaperPlane color="white" size={"32px"} />
-              Enviar
-            </button>
+        
       </div> 
         <div className="flex flex-col gap-4 w-full">
           <label className="text-[24px] mt-8 font-medium w-full" htmlFor="name">
@@ -244,7 +245,7 @@ export default function Home() {
               type="text"
               id="name"
               placeholder="exemplo@gmail.com"
-              className="border-2 p-4 rounded-full border-black block w-full"
+              className={`border-2 p-4 rounded-full border-black block w-full ${whatsAppNumber.length > 0 ? 'bg-nevada-100' : 'bg-white'}`}
               onChange={(e) => setEmail(e.target.value)}
               disabled = {whatsAppNumber.length > 0}
             />
@@ -325,19 +326,11 @@ export default function Home() {
             type="text"
             id="name"
             placeholder="1165693056"
-            className="border-2 p-4 rounded-full border-black block w-full"
+            className="border-2 p-4 rounded-full border-black block w-full "
             onChange={(e) => setWhatsAppNumber(e.target.value)}
-
+            disabled = {email.length > 0}
           />
-          <a
-             onClick={async () => {
-              sendWhatsApp(true);
-              
-            }}
-            className="absolute p-[14px] bg-tango-500 hover:bg-tango-600 active:bg-tango-700 rounded-full mr-1"
-          >
-            <FaRegPaperPlane color="white" size={"24px"} />
-          </a>
+       
         </div>
       </div> 
           <div className="flex flex-col gap-4 w-full">
@@ -352,20 +345,16 @@ export default function Home() {
                 type="email"
                 id="name"
                 placeholder="exemplo@gmail.com"
-                className="border-2 p-4 rounded-full border-black block w-full"
+                className={`border-2 p-4 rounded-full border-black block w-full ${whatsAppNumber.length > 0 ? 'bg-nevada-100' : 'bg-white'}`}
                 onChange={(e) => setEmail(e.target.value)}
+                disabled = {whatsAppNumber.length > 0}
+
               />
-              <button
-                onClick={async () => {
-                  sendMessage(true);
-                }}
-                className="absolute p-[14px] bg-tango-500 hover:bg-tango-600 active:bg-tango-700 rounded-full mr-1"
-              >
-                <FaRegPaperPlane color="white" size={"24px"} />
-              </button>
+           
             </div>
           </div>
         </div>
+        
       </main>
     </>
   );

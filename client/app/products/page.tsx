@@ -211,7 +211,7 @@ return (
           <div className="fixed bottom-[32px] right-[32px] bg-nevada-500 rounded-[50%] flex flex-col px-2 py-4 border-solid border-[4px] border-white justify-center items-center">
           
             <img src="recipe.png" className="w-[32px] h-[32px]" alt="" />
-            <p className="text-[16px] text-center md:text-[20px] text-white px-4 rounded-[50%] py-1 flex flex-wrap md:mr-6 ">Emitir</p>
+            <p className="text-[16px] text-center text-white px-4 rounded-[50%] py-1 flex flex-wrap ">Emitir</p>
          
             <div className="absolute bg-white right-[6px] md:right-[20px] z-50 top-[6px] w-4 h-4 border-2 border-white rounded-[50%] flex justify-center items-center">
               <p className="text-nevada-500 text-[12px] font-bold ">

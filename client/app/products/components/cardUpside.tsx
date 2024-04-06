@@ -117,7 +117,7 @@ export default function CardUpside({
 
               </div>
               :<></>}
-            <img src={product.imageUrl} alt="" className="w-[100%] aspect-square rounded-[16px] mb-4"/>
+            <img src={product.imageUrl} alt="" className="w-[100%] aspect-square object-contain rounded-[16px] mb-4"/>
             <p className={`font-bold text-[16px] ${quantitySelected == product.quantity[0] ? 'text-tango-500' : ''}`}>{product.name} </p>
             <p className="font-normal text-[12px]">{product.quantity[0]}</p>
           </div>

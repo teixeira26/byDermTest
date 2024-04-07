@@ -118,6 +118,7 @@ export default function Card({
         className="mt-4 w-full flex gap-4  h-fit"
       >
         <div className="relative w-fit h-fit ">
+
           <img
             className="rounded-[16px] object-contain h-[20vh] min-w-[18vh] w-[18vh] md:h-[20vh] md:w-[20vh] cursor-pointer"
             alt={product.name}

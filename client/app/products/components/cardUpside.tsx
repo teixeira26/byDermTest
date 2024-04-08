@@ -110,19 +110,20 @@ export default function CardUpside({
 
   return (
     <>
-       {product ?<div className="flex flex-col justify-start p-[1px] " onClick={()=>changeCart(product, product.quantity[0])}>
+       {product ?<div className="flex flex-col justify-start md:items-center p-[1px] " onClick={()=>changeCart(product, product.quantity[0])}>
               {quantitySelected == product.quantity[0] ? 
-              <div className="flex justify-end">
+              <div className="flex justify-end md:justify-center">
               <img src="check.png" alt='iconChecked' className="w-6 h-6 absolute translate-x-[8px] translate-y-[-8px]" />
 
               </div>
               :<></>}
-<div className="w-[100%] aspect-square">
+<div className="w-[100%] md:w-[40%] aspect-square ">
 <Image
   src={`/${product.imageUrl}`}
   alt=""
   layout="responsive"
   width={100}
+  priority={true}
   height={100}
   className={"rounded-[16px] mb-4 aspect-square object-contain"}
 /> 

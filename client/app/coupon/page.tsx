@@ -159,7 +159,7 @@ export default function Home() {
                   });
               }
               }}
-              className="fixed bottom-[32px] right-[32px] px-6 py-4 z-[100] text-white bg-nevada-500 rounded-[50%] flex flex-col  border-solid border-[4px] border-white justify-center items-center"
+              className="fixed font-bold bottom-[32px] right-[32px] px-6 py-4 z-[100] text-white bg-nevada-500 rounded-[50%] flex flex-col  border-solid border-[2px] border-white justify-center items-center"
             >
               <FaRegPaperPlane color="white" size={"32px"} />
               Enviar

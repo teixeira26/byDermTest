@@ -1,7 +1,6 @@
 import { RecipeEntity } from "./recipe.entity";
 
 export class RecipeValue implements RecipeEntity {
-  products: number[];
   doctorLicense: number;
   date: string;
   hour: string;
@@ -11,10 +10,13 @@ export class RecipeValue implements RecipeEntity {
   placeOfPurchase: string;
   purchaseLocality: string;
   purchaseProvince: string;
+  product: string;
+  quantity: string;
+  price: number;
+  count: number;
 
   //Constructor que inicializa el entity
   constructor({
-    products,
     doctorLicense,
     date,
     hour,
@@ -24,9 +26,12 @@ export class RecipeValue implements RecipeEntity {
     placeOfPurchase,
     purchaseLocality,
     purchaseProvince,
+    product,
+    quantity,
+    price,
+    count,
   }: {
     hour: string;
-    products: number[];
     doctorLicense: number;
     date: string;
     doctorLastName: string;
@@ -35,8 +40,11 @@ export class RecipeValue implements RecipeEntity {
     placeOfPurchase: string;
     purchaseLocality: string;
     purchaseProvince: string;
+    product: string;
+    quantity: string;
+    price: number;
+    count: number;
   }) {
-    this.products = products;
     this.doctorLicense = doctorLicense;
     this.date = date;
     this.hour = hour;
@@ -46,5 +54,9 @@ export class RecipeValue implements RecipeEntity {
     this.placeOfPurchase = placeOfPurchase;
     this.purchaseLocality = purchaseLocality;
     this.purchaseProvince = purchaseProvince;
+    this.product = product;
+    this.quantity = quantity;
+    this.price = price;
+    this.count = count;
   }
 }

@@ -14,7 +14,8 @@ function obtenerFechaArgentinaISO() {
 
 
 const createRecipe = async(doctor:any, products: any[]) => {
-    await fetch(`${BACKEND_URL}recipes/add`, {
+    products.forEach(async (product)=>{
+      await fetch(`${BACKEND_URL}recipes/add`, {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'
@@ -24,6 +25,10 @@ const createRecipe = async(doctor:any, products: any[]) => {
           doctorLicense: doctor.license,
           date: obtenerFechaArgentinaISO().split('T')[0],
           products: products,
+          product: product.name,
+          quantity: product.price.quantity,
+          price: product.price.amount,
+          count: product.count, 
           hour: obtenerFechaArgentinaISO().split("T")[1].split(".")[0],
           doctorLastName:  doctor.lastName,
           doctorName: doctor.name,
@@ -33,6 +38,8 @@ const createRecipe = async(doctor:any, products: any[]) => {
           dateOfPurchase: ""
         })
       }).then((x)=>(x.json()));
+    })
+    
     return 
 } 
 

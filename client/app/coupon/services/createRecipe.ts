@@ -25,7 +25,6 @@ const createRecipe = async(doctor:any, products: any[]) => {
         body: JSON.stringify({
           doctorLicense: doctor.license,
           date: obtenerFechaArgentinaISO().split('T')[0],
-          products: products,
           product: product.name,
           quantity: product.price[0].quantity,
           price: product.price[0].amount,

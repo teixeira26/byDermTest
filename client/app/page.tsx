@@ -97,12 +97,12 @@ export default function Home() {
               </label>
               <input
                 type="text"
-                className={`border-solid border-[1px] px-4 py-2 text-black ${(signUpError && !/^[a-zA-Z\s]*$/.test(doctorName))? 'border-red-500' : 'border-black'}`}
+                className={`border-solid border-[1px] px-4 py-2 text-black ${(signUpError && !/^[a-zA-ZÀ-ÖØ-öø-úÜüÑñÁáÉéÍíÓóÚú\s]*$/.test(doctorName))? 'border-red-500' : 'border-black'}`}
                 name="matricula"
                 placeholder="Fernando"
                 onChange={(e)=>setDoctorName(e.target.value)}
               />
-               {(signUpError && !/^[a-zA-Z\s]*$/.test(doctorName)) &&
+               {(signUpError && !/^[a-zA-ZÀ-ÖØ-öø-úÜüÑñÁáÉéÍíÓóÚú\s]*$/.test(doctorName)) &&
               <p className="text-red-500 mt-[-8px]">
               Debés ingresar un nombre válido
             </p>
@@ -113,13 +113,13 @@ export default function Home() {
               </label>
               <input
                 type="text"
-                className={`border-solid border-[1px] px-4 py-2 text-black ${(signUpError && !/^[a-zA-Z\s]*$/.test(doctorLastName))? 'border-red-500' : 'border-black'}`}
+                className={`border-solid border-[1px] px-4 py-2 text-black ${(signUpError && !/^[a-zA-ZÀ-ÖØ-öø-úÜüÑñÁáÉéÍíÓóÚú\s]*$/.test(doctorLastName))? 'border-red-500' : 'border-black'}`}
                 name="matricula"
                 placeholder="Perez"
                 onChange={(e)=>setDoctorLastName(e.target.value)}
 
               />
-              {(signUpError && !/^[a-zA-Z\s]*$/.test(doctorLastName)) &&
+              {(signUpError && !/^[a-zA-ZÀ-ÖØ-öø-úÜüÑñÁáÉéÍíÓóÚú\s]*$/.test(doctorLastName)) &&
               <p className="text-red-500 mt-[-8px]">
               Debés ingresar un apellido válido
             </p>
@@ -146,7 +146,7 @@ export default function Home() {
                 className={`py-[4px] px-2 rounded-[16px] ${signUpError ? 'bg-nevada-500 ' : 'bg-tango-500'}`}
                 onClick={async () => {
                   try {
-                    if((/^[a-zA-Z\s]*$/.test(doctorName) && doctorName.length > 0) && (/^[a-zA-Z\s]*$/.test(doctorLastName) && doctorLastName.length > 0) && (/^\d{3,}$/.test(doctorLicense) && doctorLicense.length > 0)){
+                    if((/^[a-zA-ZÀ-ÖØ-öø-úÜüÑñÁáÉéÍíÓóÚú\s]*$/.test(doctorName) && doctorName.length > 0) && (/^[a-zA-ZÀ-ÖØ-öø-úÜüÑñÁáÉéÍíÓóÚú\s]*$/.test(doctorLastName) && doctorLastName.length > 0) && (/^\d{3,}$/.test(doctorLicense) && doctorLicense.length > 0)){
                       await signUp(doctorName, doctorLastName, doctorLicense)
                     Swal.fire({
                       position: "bottom-start",

@@ -122,7 +122,7 @@ export default function Page() {
         </div>
       )}
 
-      <nav className="flex items-center justify-center fixed z-40 w-[100vw] bg-white top-0 left-0 pt-8 pb-8 px-8">
+      <nav className={`flex items-center  fixed z-40 w-[100vw] bg-white top-0 left-0 pt-8 pb-8 px-8 ${productsOnCart > 0  ? 'justify-between' : 'justify-center'}`}>
         <Image
           className="mr-4 "
           alt="logo byDerm"
@@ -130,7 +130,20 @@ export default function Page() {
           height={60}
           src={"/logo.png"}
         />
-      
+      {productsOnCart > 0 && 
+              ( <div>
+               <Link href="/coupon">
+                 <p className="text-[20px] md:text-[24px] text-white bg-tango-500 px-6 rounded-[4px] py-2 flex flex-wrap  md:mr-6 text-center">Emitir Receta</p>
+               </Link>
+               {productsOnCart > 0 && (
+                 <div className="absolute bg-white right-[26px] md:right-[48px] z-50 top-[28px] w-4 h-4 border-2 border-tango-500 rounded-[50%] flex justify-center items-center">
+                   <p className="text-tango-500 text-[12px] font-bold ">
+                     {productsOnCart}
+                   </p>
+                 </div>
+               )}
+             </div>)
+      }
        
       </nav>
       <div className="grid  min-w-[calc(100vw-64px)]  w-[calc(100vw-64px)]  mt-[96px] md:mt-[124px]">
@@ -206,22 +219,7 @@ return (
            </div>)
          }
          )}
-          {productsOnCart > 0 && (
-            <Link href="/coupon">
-          <div className="fixed bottom-[32px] right-[32px] bg-nevada-500 rounded-[50%] flex flex-col px-2 py-4 border-solid border-[2px] border-white justify-center items-center">
-          
-            <Image src="/recipe.png" width={32} height={32} className="w-[32px] h-[32px]" alt="emitir" priority />
-            <p className="text-[16px] text-center text-white px-4 rounded-[50%] py-1 flex flex-wrap font-bold ">Emitir</p>
          
-            <div className="absolute bg-white right-[6px] md:right-[20px] z-50 top-[6px] w-4 h-4 border-2 border-white rounded-[50%] flex justify-center items-center">
-              <p className="text-nevada-500 text-[12px] font-bold ">
-                {productsOnCart}
-              </p>
-            </div>
-        </div>
-        </Link>
-
-              )}
             </>
         ) : (
           <div className="flex justify-center w-[100vw]">

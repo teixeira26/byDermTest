@@ -26,7 +26,7 @@ app.use('/doctors', doctorRoutes);
 app.use('/recipes', recipeRoutes);
 app.use('/products', productRoutes);
 app.use('/send', sendRoutes);
-app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+app.use((err: Error, req: Request, res: Response, next: any) => {
   console.error(`Error on ${req.method} ${req.url}: ${err.stack}`);
   res.status(500).send('Internal Server Error');
 });

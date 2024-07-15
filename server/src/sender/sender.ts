@@ -12,7 +12,11 @@ const { JSDOM } = jsdom;
 
 
 async function convertirHTMLaImagen(htmlString: any) {
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+            executablePath: '/usr/bin/google-chrome', // Ruta al ejecutable de Chrome en tu sistema
+    headless: true, // Opción para ejecución sin interfaz gráfica
+        }
+    );
     const page = await browser.newPage();
     await page.setViewport({ width:1200, height: 1803 });
     await page.setContent(htmlString);
@@ -23,7 +27,10 @@ async function convertirHTMLaImagen(htmlString: any) {
 
 
   async function convertirImagenAPDF(imagenPath: any, pdfPath: any) {
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+            executablePath: '/usr/bin/google-chrome', // Ruta al ejecutable de Chrome en tu sistema
+    headless: true, // Opción para ejecución sin interfaz gráfica
+        });
     const page = await browser.newPage();
   
     await page.setViewport({ width: 1920, height: 1080 });

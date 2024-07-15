@@ -7,19 +7,8 @@ const smtpTransport = require('nodemailer-smtp-transport');
 const puppeteer = require('puppeteer');
 const path = require('path');
 const fs = require('fs');
-const venom = require ('venom-bot');
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
-
-// let clientVenom:any;
-// venom
-//   .create("session-name")
-//   .then((client:any) =>{
-//      clientVenom = client;
-//     })
-//   .catch((error:any) => {
-//     console.log(error);
-//   });
 
 
 async function convertirHTMLaImagen(htmlString: any) {
@@ -142,19 +131,6 @@ const newHTML = (document.documentElement.outerHTML);
 })
 .catch((err)=>console.log(err))});
 
-
-useRouter.post("/sendWhatsapp", async(req, res)=>{
-    // const {number} = req.body;
-    // await clientVenom
-    // .sendFile(
-    //     `549${number}@c.us`,
-    //     path.join(__dirname, '../../archive.pdf'),
-    //     'archive.pdf',
-    //     '¡Hola! Queremos agradecerte por confiar en nuestros médicos y productos. Como muestra de nuestro agradecimiento, queremos ofrecerte un cupón de descuento del 25%. ¡Esperamos que lo disfrutes!'
-    //   )
-    res.send("Whats enviado")
-    
-})
 
 
 export default useRouter;

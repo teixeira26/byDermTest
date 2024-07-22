@@ -64,7 +64,7 @@ export default function Home() {
               quantity: x.quantity
             }
           })
-          sendEmail(email, doctor.name, doctor.license, products);
+          sendEmail(email, `${doctor.name} + ${doctor.lastName}`, doctor.license, products);
         createRecipe(
           JSON.parse(localStorage.getItem("changed") as any),
           cartItems.map((x: any) => {

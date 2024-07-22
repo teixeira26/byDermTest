@@ -101,6 +101,8 @@ products.forEach((x: any)=>{
       break;
       case 'vg8p3fx6Am1ieSR7XupP':
       x = {...x, quantity: 'tonomedio'}
+      case 'jWdMcanaXB6TbXjLlV0u':
+      x = {...x, quantity: 'sincolor'}
       break;
     default:
       x = x;

@@ -713,6 +713,12 @@ const htmlContent = `
                         <p>TONO MEDIO</p>
     
                     </div>
+                    <div style="display: flex; align-items: center; font-size: 12px; font-weight: bold;" class="jWdMcanaXB6TbXjLlV0u">
+                        <div class="circle sincolor"></div>
+                        <p>SIN COLOR</p>
+    
+                    </div>
+                  
                   
                     <p class="contentBadge">SUPER HIDRATANTE Y DESCONGESTIVO</p>
                 </div>

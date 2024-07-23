@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "ts-node src/index.ts",
-    "build": "pnpm install --force && cd .. && cd client && pnpm install --force && pnpm build"
+    "build": "pnpm install --force && cd .. && cd client && pnpm install --force && chmod -R 777 .next && rm -rf .next && pnpm build"
   },
   "keywords": [],
   "author": "",

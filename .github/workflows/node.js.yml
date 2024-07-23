@@ -27,7 +27,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'pnpm'
         cache-dependency-path: '**/pnpm-lock.yaml'
-    - run: chmod -R 777 /var/www/byDermCupones/_work/byDermTest/byDermTest/client/
+    - run: chmod -R 777 /var/www/byDermCupones/_work/byDermTest/byDermTest/
     - run: pnpm build
     - run: pm2 reload recetaDigital
     - run: pm2 save
